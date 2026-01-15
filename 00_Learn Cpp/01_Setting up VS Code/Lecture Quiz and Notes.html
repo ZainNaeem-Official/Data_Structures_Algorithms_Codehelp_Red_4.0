@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Studio Code C++ Setup Guide</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #007acc;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #007acc;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+            font-style: italic;
+        }
+        
+        h2 {
+            color: #005a9c;
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid #007acc;
+        }
+        
+        h3 {
+            color: #333;
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .step-box {
+            background: #f8f9fa;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .step-title {
+            font-weight: bold;
+            color: #28a745;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #d63384;
+        }
+        
+        pre {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        
+        .code-block {
+            margin: 15px 0;
+        }
+        
+        .flowchart {
+            background: #fff;
+            border: 2px solid #007acc;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-family: monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .note-title {
+            font-weight: bold;
+            color: #856404;
+        }
+        
+        .highlight {
+            background: #e7f3ff;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+            }
+            
+            .step-box {
+                page-break-inside: avoid;
+            }
+            
+            h2 {
+                page-break-after: avoid;
+            }
+        }
+        
+        .download-btn {
+            background: #007acc;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 20px 0;
+            display: inline-block;
+        }
+        
+        .download-btn:hover {
+            background: #005a9c;
+        }
+        
+        @media screen {
+            .print-controls {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 1000;
+            }
+        }
+        
+        @media print {
+            .print-controls {
+                display: none;
+            }
+        }
+        
+        .quiz-question {
+            background: #f8f9fa;
+            border: 2px solid #007acc;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+        
+        .question-number {
+            background: #007acc;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .question-text {
+            font-size: 17px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .options {
+            margin: 15px 0;
+        }
+        
+        .option {
+            background: white;
+            padding: 12px 15px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 2px solid #dee2e6;
+            font-size: 15px;
+        }
+        
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+            font-weight: 600;
+        }
+        
+        .explanation {
+            background: #e7f3ff;
+            border-left: 4px solid #007acc;
+            padding: 12px 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .explanation strong {
+            color: #007acc;
+        }
+    </style>
+</head>
+<body>
+    <div class="print-controls">
+        <button class="download-btn" onclick="window.print()">📄 Download as PDF</button>
+    </div>
+
+    <div class="header">
+        <h1>Setting up Visual Studio Code for C++ Coding on Windows</h1>
+        <p class="subtitle">A Comprehensive Step-by-Step Guide</p>
+    </div>
+
+    <div class="highlight">
+        <p><strong>Overview:</strong> This guide provides a complete walkthrough for setting up Visual Studio Code (VS Code) for C++ programming on Windows. Follow these steps to create an efficient and developer-friendly environment for C++ coding.</p>
+    </div>
+
+    <div class="step-box">
+        <div class="step-title">Step 1: Install Visual Studio Code</div>
+        <ul>
+            <li>Download and install Visual Studio Code from the <strong>official website</strong> (<code>https://code.visualstudio.com/</code>)</li>
+            <li>Complete the installation by following the on-screen instructions</li>
+        </ul>
+    </div>
+
+    <div class="step-box">
+        <div class="step-title">Step 2: Setup C++ Compiler</div>
+        <p>To compile C++ code, a compiler like MinGW is needed:</p>
+        
+        <h3>1. Download and Install MinGW:</h3>
+        <ul>
+            <li>Visit <strong>MinGW</strong> and download the installer</li>
+            <li>Run the installer and select <code>gcc</code> and <code>g++</code> packages during installation. These are essential for compiling C++ programs</li>
+            <li>Add the path to the MinGW bin directory (e.g., <code>C:\MinGW\bin</code>) to the system Path environment variable</li>
+        </ul>
+        
+        <h3>2. Verify Installation:</h3>
+        <ul>
+            <li>Open Command Prompt and type <code>g++ --version</code> to confirm the installation</li>
+        </ul>
+    </div>
+
+    <div class="step-box">
+        <div class="step-title">Step 3: Configure Visual Studio Code</div>
+        <ul>
+            <li>Open VS Code and install the following extensions for a seamless C++ development experience:
+                <ul>
+                    <li><strong>C/C++</strong> by Microsoft</li>
+                    <li><strong>C++ Intellisense</strong> for code autocompletion</li>
+                </ul>
+            </li>
+            <li>Create or open a <code>.cpp</code> file to get started with coding</li>
+        </ul>
+    </div>
+
+    <div class="step-box">
+        <div class="step-title">Step 4: Configure Tasks</div>
+        <p>To compile and run C++ programs within VS Code, tasks need to be set up:</p>
+        
+        <h3>1. Create a tasks.json File:</h3>
+        <ul>
+            <li>Go to <strong>Terminal → Configure Tasks</strong> and select <strong>Create tasks.json file from template</strong></li>
+            <li>Choose <strong>Others</strong></li>
+        </ul>
+        
+        <h3>2. Modify tasks.json:</h3>
+        <div class="code-block">
+            <pre>{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.exe"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"]
+        }
+    ]
+}</pre>
+        </div>
+        
+        <h3>3. Run Tasks:</h3>
+        <ul>
+            <li>Compile using <code>Ctrl+Shift+B</code></li>
+            <li>Run directly in the terminal using the generated <code>.exe</code> file</li>
+        </ul>
+    </div>
+
+    <h2>Flowchart: Compilation Process</h2>
+    <div class="flowchart">+--------------+
+| Write C++    |
+| Code in VS   |
+| Code         |
++------|-------+
+       |
+       v
++------v-------+
+| Save as .cpp |
+| File         |
++------|-------+
+       |
+       v
++------v-------+
+| Use g++ to   |
+| Compile to   | 
+| .exe file    |
++------|-------+
+       |
+       v
++------v-------+
+| Execute .exe |
+| via Terminal |
++--------------+</div>
+
+    <div class="note">
+        <div class="note-title">💡 Quick Tips:</div>
+        <ul>
+            <li>Always save your <code>.cpp</code> file before compiling</li>
+            <li>Use <code>Ctrl+Shift+B</code> as a keyboard shortcut for building</li>
+            <li>Check the terminal output for any compilation errors</li>
+            <li>Keep your MinGW installation updated for the latest features</li>
+        </ul>
+    </div>
+
+    <div class="highlight" style="margin-top: 40px; text-align: center;">
+        <p><strong>You're all set!</strong> Your Visual Studio Code is now configured for C++ development on Windows.</p>
+    </div>
+
+    <h2 style="margin-top: 50px;">📝 Lecture Quiz</h2>
+    <p style="color: #666; margin-bottom: 30px;">Test your understanding of the VS Code C++ setup process with these questions:</p>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 1</div>
+        <div class="question-text">Which extension is necessary to be installed in VS Code for C++ development?</div>
+        <div class="options">
+            <div class="option">A. Python Extension Pack</div>
+            <div class="option correct">B. C/C++ by Microsoft ✓</div>
+            <div class="option">C. Java Debugger</div>
+            <div class="option">D. Ruby Essentials Pack</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> The 'C/C++ by Microsoft' extension is essential for enabling features like IntelliSense, debugging, and code navigation in VS Code for C++ development.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 2</div>
+        <div class="question-text">What command is used to compile a C++ file in the terminal using g++?</div>
+        <div class="options">
+            <div class="option">A. gcc filename.cpp</div>
+            <div class="option">B. compile filename.cpp</div>
+            <div class="option correct">C. g++ filename.cpp -o outputfile ✓</div>
+            <div class="option">D. cppc filename.cpp</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> The correct command to compile a C++ file using g++ in the terminal is 'g++ filename.cpp -o outputfile'. This will generate an executable named 'outputfile'.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 3</div>
+        <div class="question-text">How do you execute a compiled C++ program from the terminal in VS Code?</div>
+        <div class="options">
+            <div class="option correct">A. ./outputfile ✓</div>
+            <div class="option">B. run outputfile</div>
+            <div class="option">C. execute outputfile</div>
+            <div class="option">D. ./a.out</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> To execute a compiled C++ program from the terminal, use './outputfile' if 'outputfile' is the name of the generated executable.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 4</div>
+        <div class="question-text">What is the role of the 'tasks.json' file in VS Code for C++ development?</div>
+        <div class="options">
+            <div class="option">A. To set up user interface themes</div>
+            <div class="option">B. To manage workspace settings</div>
+            <div class="option correct">C. To configure automated tasks like building C++ files ✓</div>
+            <div class="option">D. To manage keybindings</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> The 'tasks.json' file is used in VS Code to automate tasks such as building C++ files. It allows you to define how the build command is executed.
+        </div>
+    </div>
+
+    <div class="highlight" style="margin-top: 40px; text-align: center; background: #d4edda; border: 2px solid #28a745;">
+        <p style="color: #155724; font-size: 18px;"><strong>🎓 End of Document</strong></p>
+        <p style="color: #155724;">Review the quiz answers to reinforce your learning!</p>
+    </div>
+
+</body>
+</html>

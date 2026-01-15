@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Type Casting in C++</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #007acc;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #007acc;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+            font-style: italic;
+        }
+        
+        h2 {
+            color: #005a9c;
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid #007acc;
+        }
+        
+        h3 {
+            color: #333;
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .code-section {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
+        .code-section pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .code-title {
+            background: #007acc;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px 5px 0 0;
+            font-weight: bold;
+            margin-bottom: -20px;
+            display: inline-block;
+        }
+        
+        .loop-card {
+            background: white;
+            border: 2px solid #007acc;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .loop-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 22px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .syntax-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .syntax-title {
+            font-weight: bold;
+            color: #2e7d32;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .component-list {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .component-list-title {
+            font-weight: bold;
+            color: #1976d2;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .mistake-card {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .mistake-title {
+            font-weight: bold;
+            color: #c62828;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        ul {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #d63384;
+        }
+        
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .note-title {
+            font-weight: bold;
+            color: #856404;
+        }
+        
+        .highlight {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        .comparison-box {
+            background: #f3e5f5;
+            border: 2px solid #9c27b0;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .comparison-title {
+            background: #9c27b0;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .nested-visual {
+            background: #fff9c4;
+            border: 2px solid #fbc02d;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .nested-title {
+            background: #fbc02d;
+            color: #333;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+            }
+            
+            .loop-card, .mistake-card {
+                page-break-inside: avoid;
+            }
+            
+            h2 {
+                page-break-after: avoid;
+            }
+        }
+        
+        .quiz-question {
+            background: #f8f9fa;
+            border: 2px solid #007acc;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+        
+        .question-number {
+            background: #007acc;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .question-text {
+            font-size: 17px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .options {
+            margin: 15px 0;
+        }
+        
+        .option {
+            background: white;
+            padding: 12px 15px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 2px solid #dee2e6;
+            font-size: 15px;
+        }
+        
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+            font-weight: 600;
+        }
+        
+        .explanation {
+            background: #e7f3ff;
+            border-left: 4px solid #007acc;
+            padding: 12px 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .explanation strong {
+            color: #007acc;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .warning-title {
+            font-weight: bold;
+            color: #e65100;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Type Casting in C++</h1>
+        <p class="subtitle">Converting One Data Type to Another</p>
+    </div>
+
+    <div class="highlight">
+        <p><strong>Lecture Summary:</strong> This session delves into Type Casting in C++, which is the conversion of one data type to another. The two primary forms of typecasting in C++ are Implicit Typecasting and Explicit Typecasting.</p>
+    </div>
+
+    <h2>Implicit Typecasting</h2>
+
+    <div class="loop-card">
+        <div class="loop-header">🔄 Implicit Typecasting (Automatic Type Conversion)</div>
+        
+        <p><strong>Implicit Typecasting</strong>, also known as automatic type conversion, is performed by the compiler without any explicit instruction from the programmer. This is typically done when converting a smaller data type to a larger data type, ensuring no data loss.</p>
+
+        <div style="margin-top: 20px;">
+            <span class="code-title">💻 Example: Implicit Conversion</span>
+            <div class="code-section">
+                <pre>int num = 10;
+double result = num; // Implicit conversion from int to double</pre>
+            </div>
+        </div>
+
+        <div class="highlight" style="margin-top: 15px;">
+            <p><strong>Explanation:</strong> Here, the <code>int</code> type <code>num</code> is implicitly converted to <code>double</code> because <code>double</code> is a larger data type and can accommodate an <code>int</code>.</p>
+        </div>
+
+        <div class="component-list" style="margin-top: 20px;">
+            <div class="component-list-title">🔑 Key Characteristics:</div>
+            <ul>
+                <li>Performed automatically by the compiler</li>
+                <li>Also known as <strong>coercion</strong></li>
+                <li>Typically converts smaller types to larger types</li>
+                <li>No data loss in most cases</li>
+                <li>No explicit instruction from programmer needed</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Explicit Typecasting</h2>
+
+    <div class="loop-card">
+        <div class="loop-header">✋ Explicit Typecasting (Manual Type Conversion)</div>
+        
+        <p><strong>Explicit Typecasting</strong>, or manual type conversion, requires the programmer to explicitly specify the conversion. This is done using operators or functions and is necessary when converting a larger data type to a smaller one or converting between incompatible types.</p>
+
+        <div style="margin-top: 20px;">
+            <span class="code-title">💻 Example: Explicit Conversion</span>
+            <div class="code-section">
+                <pre>double b = 9.99;
+int a = static_cast&lt;int&gt;(b); // Explicit conversion using static_cast</pre>
+            </div>
+        </div>
+
+        <div class="highlight" style="margin-top: 15px;">
+            <p><strong>Explanation:</strong> In this example, <code>b</code> is cast from <code>double</code> to <code>int</code>, which truncates the decimal part. The result is <code>a = 9</code>.</p>
+        </div>
+
+        <div class="syntax-box" style="margin-top: 20px;">
+            <div class="syntax-title">📋 Common Cast Operators:</div>
+            <ul>
+                <li><code>static_cast&lt;type&gt;(value)</code> - Most common, compile-time cast</li>
+                <li><code>dynamic_cast&lt;type&gt;(value)</code> - Runtime cast for polymorphic types</li>
+                <li><code>const_cast&lt;type&gt;(value)</code> - Removes const qualifier</li>
+                <li><code>reinterpret_cast&lt;type&gt;(value)</code> - Low-level reinterpretation</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Important Pointers to Keep in Mind</h2>
+
+    <div class="warning-box">
+        <div class="warning-title">⚠️ Data Loss</div>
+        <p>Be cautious of possible data loss during explicit typecasting, especially when converting from a larger type to a smaller type.</p>
+    </div>
+
+    <div class="warning-box">
+        <div class="warning-title">⚠️ Compiler Warnings</div>
+        <p>Pay attention to compiler warnings for unexpected conversions. They often indicate potential issues in your code.</p>
+    </div>
+
+    <div class="warning-box">
+        <div class="warning-title">⚠️ Precision Issues</div>
+        <p>Converting floating-point numbers to integers will result in loss of precision. The decimal part is truncated, not rounded.</p>
+    </div>
+
+    <div class="note" style="margin-top: 20px;">
+        <div class="note-title">💡 Pro Tip:</div>
+        <p>For more detailed information and a comprehensive understanding, it's highly recommended to watch the correlating instructional video linked in the course materials.</p>
+    </div>
+
+    <h2>Code Examples</h2>
+
+    <p>Let's consider a few scenarios where typecasting is applied:</p>
+
+    <div style="margin-top: 20px;">
+        <span class="code-title">💻 Mixed-Type Arithmetic</span>
+        <div class="code-section">
+            <pre>// Mixed-type arithmetic
+int intVal = 8;
+float floatVal = 5.5;
+float result = intVal + floatVal; // Implicit conversion of intVal to float</pre>
+        </div>
+    </div>
+
+    <div class="highlight" style="margin-top: 15px;">
+        <p><strong>Explanation:</strong> When performing arithmetic operations with mixed types, the compiler implicitly converts the smaller type (<code>int</code>) to the larger type (<code>float</code>) to maintain precision.</p>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <span class="code-title">💻 Explicitly Converting Double to Int</span>
+        <div class="code-section">
+            <pre>// Explicitly converting a double to an int
+double pi = 3.14159;
+int truncatedPi = static_cast&lt;int&gt;(pi); // 3</pre>
+        </div>
+    </div>
+
+    <div class="highlight" style="margin-top: 15px;">
+        <p><strong>Explanation:</strong> The decimal portion is truncated (not rounded), so <code>truncatedPi</code> equals 3.</p>
+    </div>
+
+    <div class="comparison-box">
+        <span class="comparison-title">⚖️ Implicit vs Explicit Typecasting</span>
+        <div style="margin-top: 15px;">
+            <div style="margin-bottom: 15px;">
+                <strong style="color: #9c27b0;">Implicit Typecasting:</strong>
+                <ul>
+                    <li>Automatic conversion by compiler</li>
+                    <li>Usually safe (small to large type)</li>
+                    <li>No programmer intervention needed</li>
+                    <li>Example: <code>int</code> to <code>double</code></li>
+                </ul>
+            </div>
+            <div>
+                <strong style="color: #9c27b0;">Explicit Typecasting:</strong>
+                <ul>
+                    <li>Manual conversion by programmer</li>
+                    <li>May cause data loss (large to small type)</li>
+                    <li>Requires cast operators</li>
+                    <li>Example: <code>double</code> to <code>int</code> using <code>static_cast</code></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="note" style="margin-top: 30px;">
+        <div class="note-title">💡 Remember:</div>
+        <p><strong>Note:</strong> While implicit conversions can simplify code, explicit conversions provide more control and precision where necessary. Always be aware of potential data loss when casting between types.</p>
+    </div>
+
+    <h2 style="margin-top: 50px;">📝 Lecture Quiz</h2>
+    <p style="color: #666; margin-bottom: 30px;">Test your understanding of type casting in C++ with these questions:</p>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 1</div>
+        <div class="question-text">Which of the following statements about implicit typecasting in C++ is true?</div>
+        <div class="options">
+            <div class="option">A. Implicit typecasting is always safe and does not lead to data loss.</div>
+            <div class="option">B. Implicit typecasting is initiated manually by the programmer.</div>
+            <div class="option correct">C. Implicit typecasting is also known as coercion. ✓</div>
+            <div class="option">D. Implicit typecasting can convert any data type into string type automatically.</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> Implicit typecasting, also known as coercion, is automatically performed by the compiler in C++ to convert data from one type to another without explicit instruction from the programmer.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 2</div>
+        <div class="question-text">In C++, what is the correct way to perform explicit typecasting?</div>
+        <div class="options">
+            <div class="option">A. int variable = (int)value; // C-style cast</div>
+            <div class="option correct">B. int variable = static_cast&lt;int&gt;(value); // C++-style cast ✓</div>
+            <div class="option">C. int variable = (integer)value; // Java-style cast</div>
+            <div class="option">D. int variable = convert&lt;int&gt;(value); // Hypothetical function</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> The safest and preferred way to perform explicit typecasting in C++ is using the static_cast operator. It provides more control and reduces the likelihood of errors compared to older C-style casts.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 3</div>
+        <div class="question-text">Which of the following can lead to data loss when using implicit typecasting?</div>
+        <div class="options">
+            <div class="option">A. Casting from <code>int</code> to <code>double</code></div>
+            <div class="option correct">B. Casting from <code>double</code> to <code>int</code> ✓</div>
+            <div class="option">C. Casting from <code>int</code> to <code>long int</code></div>
+            <div class="option">D. Casting from <code>char</code> to <code>int</code></div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> When casting a double to an int implicitly, the fractional part of the double is lost, potentially leading to data loss.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 4</div>
+        <div class="question-text">What will be the output of the following C++ code?</div>
+        <div class="code-section" style="margin: 15px 0;">
+            <pre>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    char ch = 'A';
+    int ascii = ch;
+    cout &lt;&lt; "ASCII value of " &lt;&lt; ch &lt;&lt; " is " &lt;&lt; ascii &lt;&lt; endl;
+    return 0;
+}</pre>
+        </div>
+        <div class="options">
+            <div class="option correct">A. ASCII value of A is 65 ✓</div>
+            <div class="option">B. ASCII value of A is 97</div>
+            <div class="option">C. ASCII value of A is 66</div>
+            <div class="option">D. ASCII value of A is 100</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> In C++, char types can be implicitly cast to int without data loss, giving the ASCII equivalent. The ASCII value of 'A' is 65.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 5</div>
+        <div class="question-text">Which statement about explicit typecasting is incorrect in C++?</div>
+        <div class="options">
+            <div class="option">A. It can be used to avoid compiler warnings.</div>
+            <div class="option correct">B. It always prevents data loss. ✓</div>
+            <div class="option">C. It should be used when implicit conversion isn't suitable.</div>
+            <div class="option">D. It uses operators like static_cast, dynamic_cast, const_cast, and reinterpret_cast.</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> While explicit typecasting can control implicit conversions and avoid compiler warnings, it does not inherently prevent data loss. Careful analysis of the types involved is still required.
+        </div>
+    </div>
+
+    <div class="highlight" style="margin-top: 40px; text-align: center; background: #d4edda; border: 2px solid #28a745;">
+        <p style="color: #155724; font-size: 18px;"><strong>🎓 End of Document</strong></p>
+        <p style="color: #155724;">Master type casting for safer and more efficient C++ programming!</p>
+    </div>
+
+</body>
+</html>

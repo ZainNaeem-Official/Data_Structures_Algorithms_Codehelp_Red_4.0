@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to C++ Programming</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #007acc;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #007acc;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+            font-style: italic;
+        }
+        
+        h2 {
+            color: #005a9c;
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid #007acc;
+        }
+        
+        h3 {
+            color: #333;
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .concept-box {
+            background: #f8f9fa;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .concept-title {
+            font-weight: bold;
+            color: #28a745;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #d63384;
+        }
+        
+        .flowchart {
+            background: #fff;
+            border: 2px solid #007acc;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .flowchart-box {
+            background: #e7f3ff;
+            border: 2px solid #007acc;
+            padding: 10px 20px;
+            margin: 10px auto;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold;
+        }
+        
+        .flowchart-arrow {
+            color: #007acc;
+            font-size: 24px;
+            margin: 5px 0;
+        }
+        
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .note-title {
+            font-weight: bold;
+            color: #856404;
+        }
+        
+        .highlight {
+            background: #e7f3ff;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        .uses-list {
+            background: white;
+            border: 2px solid #007acc;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .uses-list li {
+            margin: 12px 0;
+        }
+        
+        .uses-list strong {
+            color: #007acc;
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+            }
+            
+            .concept-box {
+                page-break-inside: avoid;
+            }
+            
+            h2 {
+                page-break-after: avoid;
+            }
+        }
+        
+        .quiz-question {
+            background: #f8f9fa;
+            border: 2px solid #007acc;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+        
+        .question-number {
+            background: #007acc;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .question-text {
+            font-size: 17px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .options {
+            margin: 15px 0;
+        }
+        
+        .option {
+            background: white;
+            padding: 12px 15px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 2px solid #dee2e6;
+            font-size: 15px;
+        }
+        
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+            font-weight: 600;
+        }
+        
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+            font-weight: 600;
+        }
+        
+        .explanation {
+            background: #e7f3ff;
+            border-left: 4px solid #007acc;
+            padding: 12px 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .explanation strong {
+            color: #007acc;
+        }
+        
+        .compilation-step {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 20px;
+            margin: 8px 0;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .step-description {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            margin: 5px 0 15px 0;
+            border-radius: 5px;
+            border-left: 3px solid #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Introduction to C++ Programming</h1>
+        <p class="subtitle">Understanding the Fundamentals of C++ and Its Compilation Process</p>
+    </div>
+
+    <div class="highlight">
+        <p><strong>Overview:</strong> This lecture provides an introduction to C++, one of the most popular programming languages used in diverse applications. Explore the key concepts that make C++ a powerful tool for software development.</p>
+    </div>
+
+    <div class="concept-box">
+        <div class="concept-title">What is Programming?</div>
+        <p>Programming is the process of creating a set of instructions that tells a computer how to perform a task. It involves planning and coding, where logical sequences are created to perform specific operations.</p>
+    </div>
+
+    <div class="concept-box">
+        <div class="concept-title">What is a Programming Language?</div>
+        <p>A programming language is a formal language comprising a set of instructions that produce various kinds of output. They are used to implement algorithms and facilitate communication between humans and machines.</p>
+    </div>
+
+    <div class="concept-box">
+        <div class="concept-title">What is C++ and Why Do We Need It?</div>
+        <p>C++ is a general-purpose programming language created by <strong>Bjarne Stroustrup</strong> as an extension of the C programming language. It is known for its flexibility, performance, and efficiency.</p>
+        <p style="margin-top: 10px;">We need C++ because it supports <strong>object-oriented programming</strong>, which allows for code reusability and makes complex software development more manageable.</p>
+    </div>
+
+    <h2>Uses of C++ in the Real World</h2>
+    <div class="uses-list">
+        <ul>
+            <li><strong>Game Development:</strong> Due to its high performance</li>
+            <li><strong>Desktop Applications:</strong> Applications like Adobe Photoshop</li>
+            <li><strong>Operating Systems:</strong> Components of Windows OS are written in C++</li>
+            <li><strong>Web Browsers:</strong> Rendering engines of major browsers like Chrome are built using C++</li>
+        </ul>
+    </div>
+
+    <h2>Compilation Process in Laymen Terms</h2>
+    <p style="margin-bottom: 20px;">The compilation process in C++ can be visualized as follows:</p>
+    
+    <div class="flowchart">
+        <div class="flowchart-box" style="background: #e3f2fd;">Source Code</div>
+        <div class="flowchart-arrow">↓</div>
+        <div class="flowchart-box" style="background: #f3e5f5;">Preprocessor</div>
+        <div class="flowchart-arrow">↓</div>
+        <div class="flowchart-box" style="background: #e8f5e9;">Compiler</div>
+        <div class="flowchart-arrow">↓</div>
+        <div class="flowchart-box" style="background: #fff3e0;">Assembler</div>
+        <div class="flowchart-arrow">↓</div>
+        <div class="flowchart-box" style="background: #fce4ec;">Object File</div>
+        <div class="flowchart-arrow">↓</div>
+        <div class="flowchart-box" style="background: #e0f2f1;">Linker</div>
+        <div class="flowchart-arrow">↓</div>
+        <div class="flowchart-box" style="background: #c8e6c9;">Executable File</div>
+    </div>
+
+    <div style="margin-top: 25px;">
+        <div class="compilation-step">1. Preprocessor</div>
+        <div class="step-description">Handles directives like <code>#include</code> and <code>#define</code></div>
+
+        <div class="compilation-step">2. Compiler</div>
+        <div class="step-description">Translates code into assembly language</div>
+
+        <div class="compilation-step">3. Assembler</div>
+        <div class="step-description">Converts assembly code into machine code</div>
+
+        <div class="compilation-step">4. Linker</div>
+        <div class="step-description">Combines multiple object files into a single executable, using libraries as needed</div>
+    </div>
+
+    <h2>Binary Files, Object Files, and Compilation in Java</h2>
+    <div class="concept-box">
+        <ul>
+            <li><strong>Binary Files:</strong> Machine-readable files produced by the assembler</li>
+            <li><strong>Object Files:</strong> Intermediate files containing machine code but not linked</li>
+            <li><strong>Java Compilation:</strong> Java doesn't compile to machine code directly. Instead, it compiles to bytecode which is interpreted by the Java Virtual Machine (JVM), making it slower compared to C++'s direct compilation</li>
+        </ul>
+    </div>
+
+    <h2>Why C++ Output is Fast</h2>
+    <div class="note">
+        <p>C++ provides fine-grained control over system resources and memory. It directly compiles to machine code, bypassing any intermediate interpretation layer, leading to faster execution times compared to languages like Java where an interpreter is used.</p>
+    </div>
+
+    <h2 style="margin-top: 50px;">📝 Lecture Quiz</h2>
+    <p style="color: #666; margin-bottom: 30px;">Test your understanding of C++ fundamentals with these questions:</p>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 1</div>
+        <div class="question-text">What is a programming language?</div>
+        <div class="options">
+            <div class="option">A. A tool used for database management</div>
+            <div class="option">B. A language machine can understand for plain text editing</div>
+            <div class="option correct">C. A formal language comprising a set of instructions that produce various kinds of output ✓</div>
+            <div class="option">D. A system for managing files in an operating system</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> A programming language is a formal language comprising a set of instructions that can be used to produce various kinds of output, primarily to implement processes in a computer program.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 2</div>
+        <div class="question-text">Why is C++ often considered to produce faster output compared to Java?</div>
+        <div class="options">
+            <div class="option">A. C++ uses a virtual machine which optimizes execution</div>
+            <div class="option">B. Java compiles directly to machine code</div>
+            <div class="option correct">C. C++ translates code into machine code through direct compilation, avoiding Java's intermediate bytecode ✓</div>
+            <div class="option">D. Java uses pointers to directly access memory</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> C++ compiles directly into machine code which is executed by the OS, avoiding the additional step required in Java where the code is first converted to bytecode and then interpreted by the Java Virtual Machine (JVM). This difference often makes C++ faster because there is no additional layer of interpretation at runtime.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 3</div>
+        <div class="question-text">What is the primary role of the compilation process in C++?</div>
+        <div class="options">
+            <div class="option correct">A. Translate C++ code into an executable machine code file ✓</div>
+            <div class="option">B. Interpret code line-by-line during execution</div>
+            <div class="option">C. Convert C++ code into high-level Java code for execution</div>
+            <div class="option">D. Optimize code for memory management without execution</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> The compilation process in C++ translates the source code written in C++ into an executable machine code file. This involves multiple stages like preprocessing, compiling, assembling, and linking, making the code ready to be run by the computer.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 4</div>
+        <div class="question-text">In the context of C++ compilation, what are object files?</div>
+        <div class="options">
+            <div class="option">A. Text files with plain code</div>
+            <div class="option">B. Executable files that can be run directly</div>
+            <div class="option incorrect">C. Binary files that contain machine code but are not executable by themselves ✓</div>
+            <div class="option">D. Script files that store intermediary code</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> Object files are intermediate binary files that contain the machine code representation of the C++ code but are not directly executable. These files are later linked together to form runnable executables.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 5</div>
+        <div class="question-text">How does the compilation process in C++ differ from Java?</div>
+        <div class="options">
+            <div class="option">A. C++ uses a JIT compiler while Java uses an interpreted compiler</div>
+            <div class="option">B. Java code is directly converted into machine code</div>
+            <div class="option">C. C++ compiles code into bytecode which is interpreted by a virtual machine</div>
+            <div class="option correct">D. Java converts code into platform-independent bytecode, whereas C++ compiles it into platform-specific machine code ✓</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> Java converts code into bytecode, which is platform-independent and can be run by the Java Virtual Machine (JVM) on any compatible system. On the other hand, C++ compiles code into complete machine code tailored to the specific platform, which generally contributes to faster execution times.
+        </div>
+    </div>
+
+    <div class="highlight" style="margin-top: 40px; text-align: center; background: #d4edda; border: 2px solid #28a745;">
+        <p style="color: #155724; font-size: 18px;"><strong>🎓 End of Document</strong></p>
+        <p style="color: #155724;">Review the quiz answers to reinforce your learning!</p>
+    </div>
+
+</body>
+</html>

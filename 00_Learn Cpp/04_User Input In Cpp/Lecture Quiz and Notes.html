@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Input in C++</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #007acc;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #007acc;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+            font-style: italic;
+        }
+        
+        h2 {
+            color: #005a9c;
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid #007acc;
+        }
+        
+        h3 {
+            color: #333;
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .code-section {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
+        .code-section pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .code-title {
+            background: #007acc;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px 5px 0 0;
+            font-weight: bold;
+            margin-bottom: -20px;
+            display: inline-block;
+        }
+        
+        .concept-box {
+            background: #f8f9fa;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .concept-title {
+            font-weight: bold;
+            color: #28a745;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .operator-card {
+            background: white;
+            border: 2px solid #007acc;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .operator-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        
+        .operator-details {
+            padding: 10px;
+        }
+        
+        .method-card {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .method-title {
+            font-weight: bold;
+            color: #2e7d32;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        ul {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #d63384;
+        }
+        
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .note-title {
+            font-weight: bold;
+            color: #856404;
+        }
+        
+        .highlight {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        .tip-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .tip-title {
+            font-weight: bold;
+            color: #1976d2;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+            }
+            
+            .concept-box, .operator-card, .method-card {
+                page-break-inside: avoid;
+            }
+            
+            h2 {
+                page-break-after: avoid;
+            }
+        }
+        
+        .quiz-question {
+            background: #f8f9fa;
+            border: 2px solid #007acc;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+        
+        .question-number {
+            background: #007acc;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .question-text {
+            font-size: 17px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .options {
+            margin: 15px 0;
+        }
+        
+        .option {
+            background: white;
+            padding: 12px 15px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 2px solid #dee2e6;
+            font-size: 15px;
+        }
+        
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+            font-weight: 600;
+        }
+        
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+            font-weight: 600;
+        }
+        
+        .explanation {
+            background: #e7f3ff;
+            border-left: 4px solid #007acc;
+            padding: 12px 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .explanation strong {
+            color: #007acc;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>User Input in C++</h1>
+        <p class="subtitle">Mastering Input Handling with cin and Its Variations</p>
+    </div>
+
+    <div class="highlight">
+        <p><strong>Overview:</strong> This session delves into how user input is handled in C++. We'll explore the use of the cin keyword, understand the >> and << operators in the context of cin and cout, and learn about several variations of cin such as cin.ignore(), getline(), and more.</p>
+    </div>
+
+    <h2>Taking Input in C++</h2>
+    <div class="concept-box">
+        <p>In C++, user input is primarily captured using the <code>cin</code> keyword, short for <strong>Console Input</strong>. It works in conjunction with the extraction operator <code>>></code> to read data from the standard input (usually the keyboard) into program variables.</p>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <span class="code-title">📝 Basic Input Example</span>
+        <div class="code-section">
+            <pre>#include &lt;iostream&gt;
+
+int main() {
+    int number;
+    std::cout &lt;&lt; "Enter a number: ";
+    std::cin &gt;&gt; number;
+    std::cout &lt;&lt; "You entered: " &lt;&lt; number &lt;&lt; std::endl;
+    return 0;
+}</pre>
+        </div>
+    </div>
+
+    <div class="highlight" style="margin-top: 15px;">
+        <p><strong>How it works:</strong> In the above example, the user is prompted to enter a number. The <code>>></code> operator extracts the data from the input buffer and stores it in the variable <code>number</code>.</p>
+    </div>
+
+    <h2>Understanding Operators: >> and <<</h2>
+
+    <div class="operator-card">
+        <div class="operator-header">>> Extraction Operator</div>
+        <div class="operator-details">
+            <p><strong>Usage:</strong> Used with <code>cin</code> to extract data from the input stream</p>
+            <p><strong>Function:</strong> Reads data from the input buffer and stores it in a variable</p>
+            <p><strong>Example:</strong> <code>cin >> variable;</code></p>
+        </div>
+    </div>
+
+    <div class="operator-card">
+        <div class="operator-header"><< Insertion Operator</div>
+        <div class="operator-details">
+            <p><strong>Usage:</strong> Used with <code>cout</code> to send data to the output stream</p>
+            <p><strong>Function:</strong> Displays data on the console</p>
+            <p><strong>Example:</strong> <code>cout << "Hello";</code></p>
+        </div>
+    </div>
+
+    <h2>Variations of cin</h2>
+    <p style="margin-bottom: 20px;">C++ offers other input methods to handle specific situations, making input handling more flexible:</p>
+
+    <div class="method-card">
+        <div class="method-title">🔧 cin.ignore()</div>
+        <p>This function is used to <strong>ignore characters in the input buffer</strong>. It's especially useful when dealing with mixed input types or to discard unwanted data like newline characters after reading integers or other non-char types.</p>
+        <div style="margin-top: 15px;">
+            <span class="code-title">Syntax Example</span>
+            <div class="code-section">
+                <pre>std::cin.ignore(std::numeric_limits&lt;std::streamsize&gt;::max(), '\n');</pre>
+            </div>
+        </div>
+        <div class="note" style="margin-top: 15px;">
+            <p><strong>Common Use:</strong> Clear the input buffer, especially before using <code>getline()</code> after <code>cin</code></p>
+        </div>
+    </div>
+
+    <div class="method-card">
+        <div class="method-title">📝 getline()</div>
+        <p>Unlike <code>cin</code>, which stops reading input at whitespace, <code>getline()</code> is used to <strong>read an entire line of text</strong>, making it suitable for string inputs with spaces.</p>
+        <div style="margin-top: 15px;">
+            <span class="code-title">getline() Example</span>
+            <div class="code-section">
+                <pre>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+int main() {
+    std::string fullName;
+    std::cout &lt;&lt; "Enter your full name: ";
+    std::getline(std::cin, fullName);
+    std::cout &lt;&lt; "Hello, " &lt;&lt; fullName &lt;&lt; "!" &lt;&lt; std::endl;
+    return 0;
+}</pre>
+            </div>
+        </div>
+        <div class="highlight" style="margin-top: 15px;">
+            <p><strong>Key Difference:</strong> <code>cin</code> stops at whitespace, while <code>getline()</code> reads the entire line including spaces.</p>
+        </div>
+    </div>
+
+    <h2>Additional Tips</h2>
+
+    <div class="tip-box">
+        <div class="tip-title">💡 Mixing cin with getline()</div>
+        <p>When <code>cin</code> is used before <code>getline()</code>, the newline character left by <code>cin</code> can cause <code>getline()</code> to terminate immediately. Using <code>cin.ignore()</code> helps to clear the buffer in such cases.</p>
+        
+        <div style="margin-top: 15px;">
+            <span class="code-title">📝 Proper Mixed Input Handling</span>
+            <div class="code-section">
+                <pre>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+int main() {
+    int age;
+    std::string name;
+
+    std::cout &lt;&lt; "Enter your age: ";
+    std::cin &gt;&gt; age;
+    std::cin.ignore();  // clear the newline character
+
+    std::cout &lt;&lt; "Enter your name: ";
+    std::getline(std::cin, name);
+
+    std::cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; ", Age: " &lt;&lt; age &lt;&lt; std::endl;
+    return 0;
+}</pre>
+            </div>
+        </div>
+        
+        <div class="note" style="margin-top: 15px;">
+            <div class="note-title">⚠️ Important:</div>
+            <p>Always use <code>cin.ignore()</code> after <code>cin</code> and before <code>getline()</code> to prevent unexpected behavior!</p>
+        </div>
+    </div>
+
+    <h2 style="margin-top: 50px;">📝 Lecture Quiz</h2>
+    <p style="color: #666; margin-bottom: 30px;">Test your understanding of user input handling in C++ with these questions:</p>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 1</div>
+        <div class="question-text">Which operator is used to take user input in C++?</div>
+        <div class="options">
+            <div class="option">A. <<</div>
+            <div class="option">B. cin</div>
+            <div class="option correct">C. >> ✓</div>
+            <div class="option">D. cout</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> In C++, the '>>' operator is used with 'cin' to extract (take) input from the user.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 2</div>
+        <div class="question-text">What is the purpose of the 'cin.ignore()' function in C++?</div>
+        <div class="options">
+            <div class="option">A. To clear the output buffer</div>
+            <div class="option correct">B. To ignore the next line of input ✓</div>
+            <div class="option">C. To skip multiple inputs</div>
+            <div class="option">D. To ignore spaces in input</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> The 'cin.ignore()' function is used to skip or ignore the next line of input that may be left in the input buffer, for example after reading numeric inputs before a getline().
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 3</div>
+        <div class="question-text">Which of the following is a correct usage of the getline() function in C++?</div>
+        <div class="options">
+            <div class="option correct">A. getline(cin, str); ✓</div>
+            <div class="option">B. cin.getline(str);</div>
+            <div class="option">C. str.getline(cin);</div>
+            <div class="option">D. getline();</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> The getline(cin, str); function reads a line of text from standard input into the string variable 'str'. It correctly uses the input stream cin as its first parameter and a string variable as the second.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 4</div>
+        <div class="question-text">How does the '<<' operator function when used with 'cout' in C++?</div>
+        <div class="options">
+            <div class="option">A. It extracts input from the user</div>
+            <div class="option correct">B. It outputs data to the console ✓</div>
+            <div class="option">C. It shifts bits left</div>
+            <div class="option">D. It concatenates strings</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> The '<<' operator when used with 'cout' sends the data on its right to the console, effectively such that 'cout <<' is used to display output to the user.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 5</div>
+        <div class="question-text">What will be the output of the following code snippet?</div>
+        <div class="code-section" style="margin: 15px 0;">
+            <pre>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    string name;
+    cout &lt;&lt; "Enter your name: ";
+    cin &gt;&gt; name;
+    cout &lt;&lt; "Hello, " &lt;&lt; name &lt;&lt; endl;
+    return 0;
+}</pre>
+        </div>
+        <p style="margin: 10px 0; font-style: italic;">When the input provided is 'John Doe'.</p>
+        <div class="options">
+            <div class="option">A. Hello, John Doe</div>
+            <div class="option incorrect">B. Hello, John ✓</div>
+            <div class="option">C. Hello, Doe</div>
+            <div class="option">D. Compilation Error</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> The code uses 'cin >> name;' which will only read up to the first space. So for the input 'John Doe', it only reads 'John' into the 'name' variable.
+        </div>
+    </div>
+
+    <div class="highlight" style="margin-top: 40px; text-align: center; background: #d4edda; border: 2px solid #28a745;">
+        <p style="color: #155724; font-size: 18px;"><strong>🎓 End of Document</strong></p>
+        <p style="color: #155724;">Master input handling to create interactive C++ programs!</p>
+    </div>
+
+</body>
+</html>

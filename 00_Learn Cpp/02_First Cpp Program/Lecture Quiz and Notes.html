@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First C++ Program - Hello World</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #007acc;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #007acc;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+            font-style: italic;
+        }
+        
+        h2 {
+            color: #005a9c;
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid #007acc;
+        }
+        
+        h3 {
+            color: #333;
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .code-section {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
+        .code-section pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .code-title {
+            background: #007acc;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px 5px 0 0;
+            font-weight: bold;
+            margin-bottom: -20px;
+            display: inline-block;
+        }
+        
+        .component-box {
+            background: #f8f9fa;
+            border-left: 4px solid #007acc;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .component-number {
+            background: #007acc;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 50%;
+            display: inline-block;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        
+        .component-title {
+            font-weight: bold;
+            color: #007acc;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        ul {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #d63384;
+        }
+        
+        .flowchart {
+            background: #fff;
+            border: 2px solid #007acc;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .flowchart-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 25px;
+            margin: 10px auto;
+            border-radius: 8px;
+            display: inline-block;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-width: 200px;
+        }
+        
+        .flowchart-arrow {
+            color: #007acc;
+            font-size: 32px;
+            margin: 5px 0;
+            font-weight: bold;
+        }
+        
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .note-title {
+            font-weight: bold;
+            color: #856404;
+        }
+        
+        .highlight {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+            }
+            
+            .component-box {
+                page-break-inside: avoid;
+            }
+            
+            h2 {
+                page-break-after: avoid;
+            }
+        }
+        
+        .quiz-question {
+            background: #f8f9fa;
+            border: 2px solid #007acc;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+        
+        .question-number {
+            background: #007acc;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .question-text {
+            font-size: 17px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .options {
+            margin: 15px 0;
+        }
+        
+        .option {
+            background: white;
+            padding: 12px 15px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 2px solid #dee2e6;
+            font-size: 15px;
+        }
+        
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+            font-weight: 600;
+        }
+        
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+            font-weight: 600;
+        }
+        
+        .explanation {
+            background: #e7f3ff;
+            border-left: 4px solid #007acc;
+            padding: 12px 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .explanation strong {
+            color: #007acc;
+        }
+        
+        .key-point {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 12px 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .key-point strong {
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>First C++ Program: Hello World</h1>
+        <p class="subtitle">Understanding the Foundation of C++ Programming</p>
+    </div>
+
+    <div class="highlight">
+        <p><strong>Overview:</strong> In this lecture, we embark on an initial journey into C++ programming by crafting our first "Hello World" program. This session is designed to demystify each element of this introductory code, fostering a foundational understanding of C++ syntax and structure.</p>
+    </div>
+
+    <h2>Understanding the Basic "Hello World" Program</h2>
+    <p>Let's break down the simplest of C++ programs:</p>
+
+    <div style="margin-top: 20px;">
+        <span class="code-title">📝 HelloWorld.cpp</span>
+        <div class="code-section">
+            <pre>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    cout &lt;&lt; "Hello, World!" &lt;&lt; endl;
+    return 0;
+}</pre>
+        </div>
+    </div>
+
+    <h2>Key Components Explained</h2>
+
+    <div class="component-box">
+        <div class="component-title">
+            <span class="component-number">1</span>
+            #include &lt;iostream&gt;
+        </div>
+        <ul>
+            <li><strong>Purpose:</strong> This line is a preprocessor directive that tells the compiler to include the standard input-output stream library. It enables the use of <code>cout</code> for output.</li>
+        </ul>
+    </div>
+
+    <div class="component-box">
+        <div class="component-title">
+            <span class="component-number">2</span>
+            using namespace std;
+        </div>
+        <ul>
+            <li><strong>Purpose:</strong> This declaration aids in avoiding the repeated use of <code>std::</code> prefix before every standard library object. It's a directive to make the code cleaner and more readable.</li>
+        </ul>
+    </div>
+
+    <div class="component-box">
+        <div class="component-title">
+            <span class="component-number">3</span>
+            int main()
+        </div>
+        <ul>
+            <li><strong>Purpose:</strong> This is the entry point of any C++ program. The code execution starts from the <code>main()</code> function.</li>
+            <li><strong>Return Type:</strong> The function returns an integer. Typically, returning 0 at the end of the <code>main()</code> function indicates successful execution.</li>
+        </ul>
+    </div>
+
+    <div class="component-box">
+        <div class="component-title">
+            <span class="component-number">4</span>
+            cout &lt;&lt; "Hello, World!" &lt;&lt; endl;
+        </div>
+        <ul>
+            <li><strong>cout:</strong> Stands for "character output," used here to print to the standard output.</li>
+            <li><strong>&lt;&lt;:</strong> An operator that inserts the subsequent string into the output stream.</li>
+            <li><strong>"Hello, World!":</strong> The string to be displayed on the screen.</li>
+            <li><strong>endl:</strong> This manipulator is used to add a newline, effectively moving the cursor to the next line in the console.</li>
+        </ul>
+    </div>
+
+    <div class="component-box">
+        <div class="component-title">
+            <span class="component-number">5</span>
+            return 0;
+        </div>
+        <ul>
+            <li><strong>Purpose:</strong> Indicates the end of the <code>main()</code> function and tells the system that the program executed successfully.</li>
+        </ul>
+    </div>
+
+    <div class="key-point">
+        <strong>💡 Key Takeaway:</strong> Every C++ program must have a <code>main()</code> function, and it serves as the starting point for program execution. The return value of 0 conventionally indicates success.
+    </div>
+
+    <h2>Compiling and Running the Program</h2>
+    <p style="margin-bottom: 20px;">The compilation process in C++ can be visualized through the following flowchart:</p>
+
+    <div class="flowchart">
+        <div class="flowchart-box" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            Source Code<br>(MyFile.cpp)
+        </div>
+        <div class="flowchart-arrow">▼</div>
+        
+        <div class="flowchart-box" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+            Preprocessor
+        </div>
+        <div class="flowchart-arrow">▼</div>
+        
+        <div class="flowchart-box" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+            Compiler<br>(Error Detection)
+        </div>
+        <div class="flowchart-arrow">▼</div>
+        
+        <div class="flowchart-box" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+            Object File<br>(MyFile.o)
+        </div>
+        <div class="flowchart-arrow">▼</div>
+        
+        <div class="flowchart-box" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+            Linker
+        </div>
+        <div class="flowchart-arrow">▼</div>
+        
+        <div class="flowchart-box" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+            Executable<br>(MyFile.exe)
+        </div>
+    </div>
+
+    <div class="note">
+        <div class="note-title">📌 Important Note:</div>
+        <p>The compilation process transforms human-readable source code into machine-executable binary code through multiple stages. Each stage plays a crucial role in ensuring the code is correct, optimized, and ready for execution.</p>
+    </div>
+
+    <h2 style="margin-top: 50px;">📝 Lecture Quiz</h2>
+    <p style="color: #666; margin-bottom: 30px;">Test your understanding of the Hello World program with these questions:</p>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 1</div>
+        <div class="question-text">What does the 'iostream' library provide in a C++ program?</div>
+        <div class="options">
+            <div class="option">A. Graphics capabilities</div>
+            <div class="option correct">B. Input/output stream functionalities ✓</div>
+            <div class="option">C. Networking support</div>
+            <div class="option">D. String manipulation functions</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> The 'iostream' library in C++ provides functionalities for input and output operations, such as using 'cin' for input and 'cout' for output, which are essential for many basic programs including the 'Hello World' program.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 2</div>
+        <div class="question-text">Which line of code in a C++ program signifies the beginning of the main function, making it the entry point?</div>
+        <div class="options">
+            <div class="option">A. #include &lt;iostream&gt;</div>
+            <div class="option correct">B. int main() ✓</div>
+            <div class="option">C. cout &lt;&lt; 'Hello World';</div>
+            <div class="option">D. return 0;</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> The line 'int main()' declares the main function. In C++, the main function is the starting point of the program execution. It must return an integer value, typically '0' indicating successful execution.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 3</div>
+        <div class="question-text">In the statement 'cout << "Hello World";', what does '<<' represent?</div>
+        <div class="options">
+            <div class="option">A. An arithmetic operator</div>
+            <div class="option">B. A memory allocation command</div>
+            <div class="option">C. A bitwise operator</div>
+            <div class="option incorrect">D. A stream insertion operator ✓</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> In C++, '<<' is known as the stream insertion operator. It is used to insert data into a stream, specifically sending the 'Hello World' string to the standard output stream (console) when used with 'cout'.
+        </div>
+    </div>
+
+    <div class="highlight" style="margin-top: 40px; text-align: center; background: #d4edda; border: 2px solid #28a745;">
+        <p style="color: #155724; font-size: 18px;"><strong>🎓 End of Document</strong></p>
+        <p style="color: #155724;">Congratulations on completing your first C++ program!</p>
+    </div>
+
+</body>
+</html>

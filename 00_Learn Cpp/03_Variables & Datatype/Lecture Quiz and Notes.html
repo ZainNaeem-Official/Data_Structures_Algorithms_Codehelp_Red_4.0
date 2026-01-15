@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables and Datatypes in C++</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #007acc;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #007acc;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+            font-style: italic;
+        }
+        
+        h2 {
+            color: #005a9c;
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid #007acc;
+        }
+        
+        h3 {
+            color: #333;
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .code-section {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
+        .code-section pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .code-title {
+            background: #007acc;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px 5px 0 0;
+            font-weight: bold;
+            margin-bottom: -20px;
+            display: inline-block;
+        }
+        
+        .concept-box {
+            background: #f8f9fa;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .concept-title {
+            font-weight: bold;
+            color: #28a745;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .datatype-card {
+            background: white;
+            border: 2px solid #007acc;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .datatype-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+        
+        .datatype-details {
+            padding: 10px;
+        }
+        
+        .size-badge {
+            background: #28a745;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 8px;
+        }
+        
+        ul {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #d63384;
+        }
+        
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .note-title {
+            font-weight: bold;
+            color: #856404;
+        }
+        
+        .highlight {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        .info-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+            }
+            
+            .concept-box, .datatype-card {
+                page-break-inside: avoid;
+            }
+            
+            h2 {
+                page-break-after: avoid;
+            }
+        }
+        
+        .quiz-question {
+            background: #f8f9fa;
+            border: 2px solid #007acc;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+        
+        .question-number {
+            background: #007acc;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .question-text {
+            font-size: 17px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .options {
+            margin: 15px 0;
+        }
+        
+        .option {
+            background: white;
+            padding: 12px 15px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 2px solid #dee2e6;
+            font-size: 15px;
+        }
+        
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+            font-weight: 600;
+        }
+        
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+            font-weight: 600;
+        }
+        
+        .explanation {
+            background: #e7f3ff;
+            border-left: 4px solid #007acc;
+            padding: 12px 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .explanation strong {
+            color: #007acc;
+        }
+        
+        .variable-stages {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stage-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px;
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .stage-title {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Variables and Datatypes in C++</h1>
+        <p class="subtitle">Understanding the Building Blocks of C++ Programming</p>
+    </div>
+
+    <div class="highlight">
+        <p><strong>Overview:</strong> In this session, we delve into the foundational concepts of Variables and Datatypes in C++. These elements are crucial for effective programming and form the basis of data manipulation in any program.</p>
+    </div>
+
+    <h2>What is a Variable?</h2>
+    <div class="concept-box">
+        <p>A <strong>Variable</strong> in C++ is a storage unit in memory to hold data. It acts as a container for information that can be manipulated within a program.</p>
+        <p style="margin-top: 10px;">Understanding variables involves knowing how to declare, define, and initialize them.</p>
+    </div>
+
+    <div class="variable-stages">
+        <div class="stage-box">
+            <div class="stage-title">📝 Declaration</div>
+            <div>Announcing a variable without value</div>
+        </div>
+        <div class="stage-box">
+            <div class="stage-title">🔧 Definition</div>
+            <div>Allocating memory and assigning value</div>
+        </div>
+        <div class="stage-box">
+            <div class="stage-title">🔄 Re-assignment</div>
+            <div>Updating with new values</div>
+        </div>
+    </div>
+
+    <h3>Variable Operations:</h3>
+
+    <div class="info-box">
+        <strong>1. Declaration:</strong> Announcing a variable to the compiler without assigning a value:
+        <div style="margin-top: 10px;">
+            <span class="code-title">Declaration Example</span>
+            <div class="code-section">
+                <pre>int age;</pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>2. Definition and Initialization:</strong> Allocating memory and assigning an initial value simultaneously:
+        <div style="margin-top: 10px;">
+            <span class="code-title">Initialization Example</span>
+            <div class="code-section">
+                <pre>int age = 25;</pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>3. Re-assigning Values:</strong> Variables can be updated with new values:
+        <div style="margin-top: 10px;">
+            <span class="code-title">Re-assignment Example</span>
+            <div class="code-section">
+                <pre>age = 30;</pre>
+            </div>
+        </div>
+    </div>
+
+    <h2>Datatypes Categorisation</h2>
+    <p>C++ offers several datatypes, each with a specific purpose and memory size. Here's an overview:</p>
+
+    <h3>1. Primitive Data Types</h3>
+    <p style="color: #666; margin-bottom: 20px;">The basic types built into the language:</p>
+
+    <div class="datatype-card">
+        <div class="datatype-header">🔢 int - Integer</div>
+        <div class="datatype-details">
+            <p><strong>Purpose:</strong> Used for integers (whole numbers)</p>
+            <div style="margin-top: 10px;">
+                <span class="code-title">Example</span>
+                <div class="code-section">
+                    <pre>int score = 100;</pre>
+                </div>
+            </div>
+            <span class="size-badge">Size: 4 bytes</span>
+        </div>
+    </div>
+
+    <div class="datatype-card">
+        <div class="datatype-header">🔤 char - Character</div>
+        <div class="datatype-details">
+            <p><strong>Purpose:</strong> Stores a single character</p>
+            <div style="margin-top: 10px;">
+                <span class="code-title">Example</span>
+                <div class="code-section">
+                    <pre>char grade = 'A';</pre>
+                </div>
+            </div>
+            <span class="size-badge">Size: 1 byte</span>
+        </div>
+    </div>
+
+    <div class="datatype-card">
+        <div class="datatype-header">✓ bool - Boolean</div>
+        <div class="datatype-details">
+            <p><strong>Purpose:</strong> Represents boolean values - true or false</p>
+            <div style="margin-top: 10px;">
+                <span class="code-title">Example</span>
+                <div class="code-section">
+                    <pre>bool isPassed = true;</pre>
+                </div>
+            </div>
+            <span class="size-badge">Size: 1 byte</span>
+        </div>
+    </div>
+
+    <div class="datatype-card">
+        <div class="datatype-header">💰 float - Floating Point</div>
+        <div class="datatype-details">
+            <p><strong>Purpose:</strong> Floating-point numbers for decimals</p>
+            <div style="margin-top: 10px;">
+                <span class="code-title">Example</span>
+                <div class="code-section">
+                    <pre>float price = 99.99;</pre>
+                </div>
+            </div>
+            <span class="size-badge">Size: 4 bytes</span>
+        </div>
+    </div>
+
+    <div class="datatype-card">
+        <div class="datatype-header">🎯 double - Double Precision</div>
+        <div class="datatype-details">
+            <p><strong>Purpose:</strong> Double precision floating-point numbers</p>
+            <div style="margin-top: 10px;">
+                <span class="code-title">Example</span>
+                <div class="code-section">
+                    <pre>double pi = 3.14159;</pre>
+                </div>
+            </div>
+            <span class="size-badge">Size: 8 bytes</span>
+        </div>
+    </div>
+
+    <h3>2. Derived Data Types</h3>
+    <div class="info-box">
+        <p>Include arrays, pointers, references, and functions</p>
+    </div>
+
+    <h3>3. User-defined Data Types</h3>
+    <div class="info-box">
+        <p>Structure types like structures (struct), unions, and classes</p>
+    </div>
+
+    <div class="note">
+        <div class="note-title">⚠️ Important Note:</div>
+        <p>The actual size of these data types can be dependent on the system architecture. The sizes mentioned above are typical for most modern systems.</p>
+    </div>
+
+    <h2>Examples for Better Understanding</h2>
+    <p style="margin-bottom: 15px;">Exploring with code snippets can deepen understanding:</p>
+
+    <div style="margin-top: 20px;">
+        <span class="code-title">📝 Complete Example Program</span>
+        <div class="code-section">
+            <pre>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int age = 21;
+    char initial = 'J';
+    bool isStudent = true;
+    double height = 5.9;
+    
+    cout &lt;&lt; "Age: " &lt;&lt; age &lt;&lt; endl;
+    cout &lt;&lt; "Initial: " &lt;&lt; initial &lt;&lt; endl;
+    cout &lt;&lt; "Is Student: " &lt;&lt; (isStudent ? "Yes" : "No") &lt;&lt; endl;
+    cout &lt;&lt; "Height: " &lt;&lt; height &lt;&lt; endl;
+    
+    return 0;
+}</pre>
+        </div>
+    </div>
+
+    <div class="highlight" style="margin-top: 20px;">
+        <p><strong>💡 What this code demonstrates:</strong> Different datatypes in action, showcasing basic output operations and how variables of different types are declared, initialized, and used in a program.</p>
+    </div>
+
+    <h2 style="margin-top: 50px;">📝 Lecture Quiz</h2>
+    <p style="color: #666; margin-bottom: 30px;">Test your understanding of variables and datatypes with these questions:</p>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 1</div>
+        <div class="question-text">Which of the following correctly represents variable declaration in C++?</div>
+        <div class="options">
+            <div class="option">A. int a = 10;</div>
+            <div class="option correct">B. int a; ✓</div>
+            <div class="option">C. a = 10;</div>
+            <div class="option">D. int a, b = 10;</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> In C++, a variable declaration involves specifying the type and the name of the variable. 'int a;' declares a variable 'a' of type int without assigning an initial value.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 2</div>
+        <div class="question-text">Which datatype in C++ is used to represent single characters and what is its typical size?</div>
+        <div class="options">
+            <div class="option correct">A. char, 1 byte ✓</div>
+            <div class="option">B. char, 2 bytes</div>
+            <div class="option">C. string, 1 byte</div>
+            <div class="option">D. string, 2 bytes</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> The 'char' datatype in C++ is used to store single characters and typically occupies 1 byte of memory.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 3</div>
+        <div class="question-text">What will be the output of the following C++ code?</div>
+        <div class="code-section" style="margin: 15px 0;">
+            <pre>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int a = 5, b = 10;
+    a = b;
+    b = 20;
+    cout &lt;&lt; a &lt;&lt; " " &lt;&lt; b;
+    return 0;
+}</pre>
+        </div>
+        <div class="options">
+            <div class="option">A. 5 20</div>
+            <div class="option correct">B. 10 20 ✓</div>
+            <div class="option">C. 5 10</div>
+            <div class="option">D. 20 10</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> Initially, 'a' is 5 and 'b' is 10. After 'a = b;', 'a' becomes 10. Re-assigning 'b = 20;' doesn't affect 'a', so the output is '10 20'.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 4</div>
+        <div class="question-text">What is the correct way to initialize a float variable in C++?</div>
+        <div class="options">
+            <div class="option">A. float f = '3.14';</div>
+            <div class="option">B. float f = 3.14;</div>
+            <div class="option incorrect">C. float f = 3.14f; ✓</div>
+            <div class="option">D. float f = "3.14";</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> The 'f' at the end of '3.14f' indicates that it is a float literal, which is required to explicitly initialize a float variable in C++. Without the 'f', it is considered a double.
+        </div>
+    </div>
+
+    <div class="highlight" style="margin-top: 40px; text-align: center; background: #d4edda; border: 2px solid #28a745;">
+        <p style="color: #155724; font-size: 18px;"><strong>🎓 End of Document</strong></p>
+        <p style="color: #155724;">Master these fundamentals to build strong C++ programs!</p>
+    </div>
+
+</body>
+</html>

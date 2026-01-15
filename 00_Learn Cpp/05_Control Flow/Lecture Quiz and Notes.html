@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Flow Statements in C++</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #007acc;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #007acc;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+            font-style: italic;
+        }
+        
+        h2 {
+            color: #005a9c;
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid #007acc;
+        }
+        
+        h3 {
+            color: #333;
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .code-section {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
+        .code-section pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .code-title {
+            background: #007acc;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px 5px 0 0;
+            font-weight: bold;
+            margin-bottom: -20px;
+            display: inline-block;
+        }
+        
+        .statement-card {
+            background: white;
+            border: 2px solid #007acc;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .statement-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .statement-type {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .type-title {
+            font-weight: bold;
+            color: #2e7d32;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        ul {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #d63384;
+        }
+        
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .note-title {
+            font-weight: bold;
+            color: #856404;
+        }
+        
+        .highlight {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        .importance-box {
+            background: #f3e5f5;
+            border-left: 4px solid #9c27b0;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .exercise-box {
+            background: #fff9c4;
+            border: 2px solid #fbc02d;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .exercise-title {
+            background: #fbc02d;
+            color: #333;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+            }
+            
+            .statement-card, .exercise-box {
+                page-break-inside: avoid;
+            }
+            
+            h2 {
+                page-break-after: avoid;
+            }
+        }
+        
+        .quiz-question {
+            background: #f8f9fa;
+            border: 2px solid #007acc;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+        
+        .question-number {
+            background: #007acc;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .question-text {
+            font-size: 17px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .options {
+            margin: 15px 0;
+        }
+        
+        .option {
+            background: white;
+            padding: 12px 15px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 2px solid #dee2e6;
+            font-size: 15px;
+        }
+        
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+            font-weight: 600;
+        }
+        
+        .explanation {
+            background: #e7f3ff;
+            border-left: 4px solid #007acc;
+            padding: 12px 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .explanation strong {
+            color: #007acc;
+        }
+        
+        .category-header {
+            background: #007acc;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 20px;
+            margin: 25px 0 15px 0;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Control Flow Statements in C++</h1>
+        <p class="subtitle">Mastering Program Flow and Decision Making</p>
+    </div>
+
+    <div class="highlight">
+        <p><strong>Overview:</strong> In this enlightening session, we explore the intricacies of Control Flow Statements in C++. Control flow statements are pivotal in regulating the path of execution within a program based on specified conditions. They empower programmers to write flexible and dynamic code.</p>
+    </div>
+
+    <div class="importance-box">
+        <p><strong>💡 Why Control Flow Matters:</strong> Control flow statements are akin to decision-making processes in everyday life, allowing software to respond dynamically to different inputs and conditions. They are instrumental in handling complex logic pathways and are critical in algorithms and data processing tasks.</p>
+    </div>
+
+    <h2>Types of Control Flow Statements</h2>
+
+    <div class="category-header">1️⃣ Conditional Statements</div>
+
+    <div class="statement-card">
+        <div class="statement-type">
+            <div class="type-title">📌 if Statement</div>
+            <p>Executes a block of code if a specified condition is true.</p>
+        </div>
+        
+        <div class="statement-type">
+            <div class="type-title">📌 else Statement</div>
+            <p>Provides an alternate block of code if the if condition is false.</p>
+        </div>
+        
+        <div class="statement-type">
+            <div class="type-title">📌 else if Statement</div>
+            <p>Allows for multiple condition checks in sequence.</p>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <span class="code-title">💻 Conditional Statements Example</span>
+            <div class="code-section">
+                <pre>if (condition1) {
+    // Code to execute if condition1 is true
+} else if (condition2) {
+    // Code to execute if condition1 is false but condition2 is true
+} else {
+    // Code to execute if both conditions are false
+}</pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="category-header">2️⃣ Switch Statement</div>
+
+    <div class="statement-card">
+        <div class="statement-header">switch Statement</div>
+        <ul>
+            <li>Allows selection of multiple code paths based on the value of an integer or enumerated variable</li>
+            <li>Utilizes <code>case</code> labels to define execution paths</li>
+            <li>Uses <code>break</code> statements to prevent fall-through</li>
+        </ul>
+
+        <div style="margin-top: 20px;">
+            <span class="code-title">💻 Switch Statement Example</span>
+            <div class="code-section">
+                <pre>switch (variable) {
+    case 1:
+        // Code to execute if variable equals 1
+        break;
+    case 2:
+        // Code to execute if variable equals 2
+        break;
+    default:
+        // Code to execute if none of the cases match
+}</pre>
+            </div>
+        </div>
+
+        <div class="note" style="margin-top: 15px;">
+            <div class="note-title">⚠️ Important:</div>
+            <p>Always use <code>break</code> statements to prevent fall-through unless intentional cascading is desired.</p>
+        </div>
+    </div>
+
+    <div class="category-header">3️⃣ Looping Constructs</div>
+
+    <div class="statement-card">
+        <div class="statement-type">
+            <div class="type-title">🔄 for Loop</div>
+            <p>Repeats a block of code a known number of times.</p>
+        </div>
+
+        <div style="margin-top: 15px;">
+            <span class="code-title">💻 for Loop Example</span>
+            <div class="code-section">
+                <pre>for (int i = 0; i < n; i++) {
+    // Code to execute in each iteration
+}</pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="statement-card">
+        <div class="statement-type">
+            <div class="type-title">🔄 while Loop</div>
+            <p>Continuously executes a block of code as long as a given condition remains true.</p>
+        </div>
+
+        <div style="margin-top: 15px;">
+            <span class="code-title">💻 while Loop Example</span>
+            <div class="code-section">
+                <pre>while (condition) {
+    // Code to execute while condition is true
+}</pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="statement-card">
+        <div class="statement-type">
+            <div class="type-title">🔄 do-while Loop</div>
+            <p>Similar to a while loop, but checks the condition after the execution of the code block, ensuring that the loop code executes at least once.</p>
+        </div>
+
+        <div style="margin-top: 15px;">
+            <span class="code-title">💻 do-while Loop Example</span>
+            <div class="code-section">
+                <pre>do {
+    // Code to execute at least once
+} while (condition);</pre>
+            </div>
+        </div>
+
+        <div class="highlight" style="margin-top: 15px;">
+            <p><strong>Key Difference:</strong> The <code>do-while</code> loop guarantees at least one execution of the loop body, making it ideal for menu-driven programs or when you need to execute code before checking a condition.</p>
+        </div>
+    </div>
+
+    <h2>Exercises</h2>
+    <p style="margin-bottom: 20px;">Practice these exercises to reinforce your understanding:</p>
+
+    <div class="exercise-box">
+        <span class="exercise-title">🎯 Exercise 1: Basic Calculator</span>
+        <p>Implement a basic calculator using <code>if</code>, <code>else if</code>, and <code>else</code> to manage different operations (addition, subtraction, multiplication, division).</p>
+    </div>
+
+    <div class="exercise-box">
+        <span class="exercise-title">🎯 Exercise 2: Menu-Driven Program</span>
+        <p>Create a menu-driven program using a <code>switch</code> statement that executes different functions based on user choice. Include at least 4 menu options.</p>
+    </div>
+
+    <div class="exercise-box">
+        <span class="exercise-title">🎯 Exercise 3: Fibonacci Series</span>
+        <p>Write a program to print the Fibonacci series using a <code>for</code> loop. Allow the user to specify how many terms to display.</p>
+    </div>
+
+    <h2 style="margin-top: 50px;">📝 Lecture Quiz</h2>
+    <p style="color: #666; margin-bottom: 30px;">Test your understanding of control flow statements with these questions:</p>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 1</div>
+        <div class="question-text">Which of the following statements correctly describes the role of the 'if' statement in C++?</div>
+        <div class="options">
+            <div class="option">A. It executes a set of statements repetitively</div>
+            <div class="option correct">B. It chooses between two options by evaluating a condition ✓</div>
+            <div class="option">C. It terminates the execution of a loop</div>
+            <div class="option">D. It allows for initializing variables</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> The 'if' statement in C++ is used to make decisions by evaluating boolean expressions. If the condition evaluates to true, the block of code within the 'if' statement will be executed, enabling conditional execution of code blocks.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 2</div>
+        <div class="question-text">What is the correct way to write a 'switch' statement that executes code based on the variable 'choice'?</div>
+        <div class="options">
+            <div class="option correct">A. switch(choice) { case 1: executeSomething(); } ✓</div>
+            <div class="option">B. if (choice) { executeSomething(); }</div>
+            <div class="option">C. for(choice) { executeSomething(); }</div>
+            <div class="option">D. switch { case choice: executeSomething(); }</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> The 'switch' statement in C++ allows the execution of one block of code among many alternatives. The correct syntax is switch(variable) followed by one or more case labels. Here switch(choice) { case 1: executeSomething(); } is the correct syntax.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 3</div>
+        <div class="question-text">How does a 'while' loop differ from a 'do-while' loop in C++?</div>
+        <div class="options">
+            <div class="option">A. A 'while' loop executes its body at least once</div>
+            <div class="option">B. A 'do-while' loop checks its condition before executing the loop body</div>
+            <div class="option">C. A 'while' loop is a post-test loop</div>
+            <div class="option correct">D. A 'do-while' loop always executes its body at least once ✓</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> The main difference between a 'while' loop and a 'do-while' loop is that a 'do-while' loop executes the body of the loop once before checking the condition. This means the loop's body will always execute at least once, making it a post-test loop.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 4</div>
+        <div class="question-text">Which of the following statements about the 'for' loop's structure in C++ is true?</div>
+        <div class="options">
+            <div class="option">A. It does not allow initialization within its syntax</div>
+            <div class="option">B. Its iteration expression is evaluated before each loop iteration</div>
+            <div class="option">C. It doesn't evaluate the conditional expression after executing the loop body</div>
+            <div class="option correct">D. The scope of iteration variables is limited to within the loop ✓</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> In C++, the 'for' loop can incorporate initialization, condition checking, and increment expressions within its parentheses. Iteration variables declared within a 'for' loop's initialization expression have a scope limited to the duration of the for loop.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 5</div>
+        <div class="question-text">What is the purpose of the 'break' statement in loops and switch statements in C++?</div>
+        <div class="options">
+            <div class="option">A. To continue the next iteration of the loop</div>
+            <div class="option">B. To stop the execution of the entire program</div>
+            <div class="option correct">C. To exit the current loop or switch statement ✓</div>
+            <div class="option">D. To pause the loop execution for a specific time</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> The 'break' statement is used to immediately terminate a loop or exit a switch statement, transferring the control to the statement following the terminated loop or switch structure. It is effective in stopping the current cycle of execution prematurely.
+        </div>
+    </div>
+
+    <div class="highlight" style="margin-top: 40px; text-align: center; background: #d4edda; border: 2px solid #28a745;">
+        <p style="color: #155724; font-size: 18px;"><strong>🎓 End of Document</strong></p>
+        <p style="color: #155724;">Master control flow to write dynamic and responsive programs!</p>
+    </div>
+
+</body>
+</html>
