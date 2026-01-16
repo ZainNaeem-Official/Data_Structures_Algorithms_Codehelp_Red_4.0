@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basics of Programming</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #007acc;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #007acc;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+            font-style: italic;
+        }
+        
+        h2 {
+            color: #005a9c;
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid #007acc;
+        }
+        
+        h3 {
+            color: #333;
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .concept-card {
+            background: white;
+            border: 2px solid #007acc;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .concept-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .definition-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .definition-title {
+            font-weight: bold;
+            color: #2e7d32;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        .steps-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .steps-title {
+            font-weight: bold;
+            color: #1976d2;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        ul {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        .highlight {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        .flowchart-symbols {
+            background: #fff9c4;
+            border: 2px solid #fbc02d;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .symbol-title {
+            background: #fbc02d;
+            color: #333;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .symbol-item {
+            background: white;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border-left: 4px solid #fbc02d;
+        }
+        
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .example-card {
+            background: #f3e5f5;
+            border: 2px solid #9c27b0;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .example-title {
+            color: #9c27b0;
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+        
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .note-title {
+            font-weight: bold;
+            color: #856404;
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+            }
+            
+            .concept-card {
+                page-break-inside: avoid;
+            }
+            
+            h2 {
+                page-break-after: avoid;
+            }
+            
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .quiz-question {
+            background: #f8f9fa;
+            border: 2px solid #007acc;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+        
+        .question-number {
+            background: #007acc;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .question-text {
+            font-size: 17px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .options {
+            margin: 15px 0;
+        }
+        
+        .option {
+            background: white;
+            padding: 12px 15px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 2px solid #dee2e6;
+            font-size: 15px;
+        }
+        
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+            font-weight: 600;
+        }
+        
+        .explanation {
+            background: #e7f3ff;
+            border-left: 4px solid #007acc;
+            padding: 12px 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .explanation strong {
+            color: #007acc;
+        }
+        
+        .process-step {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        
+        .step-number {
+            background: white;
+            color: #667eea;
+            padding: 5px 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Basics of Programming</h1>
+        <p class="subtitle">Foundation Concepts for Aspiring Programmers</p>
+    </div>
+
+    <div class="highlight">
+        <p><strong>Overview:</strong> In this introductory lecture on Basics of Programming, we explored various foundational concepts essential for a budding programmer. The lecture provided a structured guide to understanding algorithms, programming, and problem-solving using computers.</p>
+    </div>
+
+    <h2>What is an Algorithm?</h2>
+
+    <div class="concept-card">
+        <div class="concept-header">📋 Algorithm Definition</div>
+        <div class="definition-box">
+            <p>An <strong>algorithm</strong> is essentially a step-by-step set of operations to perform a specific task. Think of an algorithm as a recipe in a cookbook, guiding you through the process to achieve a desired outcome.</p>
+        </div>
+
+        <div class="steps-box">
+            <div class="steps-title">🔑 Key Components of an Algorithm:</div>
+            <ul>
+                <li><strong>Clearly Defined Steps:</strong> Each operation should be explicitly described</li>
+                <li><strong>Inputs and Outputs:</strong> Determining what data is needed and the result expected</li>
+                <li><strong>Efficiency:</strong> Optimizing time and resources for task execution</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>What is Programming?</h2>
+
+    <div class="concept-card">
+        <div class="concept-header">💻 Programming Definition</div>
+        <div class="definition-box">
+            <p><strong>Programming</strong> is the method of designing and writing instructions for computers to execute tasks. Fundamentally, programming involves:</p>
+        </div>
+
+        <div class="process-step">
+            <span class="step-number">1</span>
+            Coding: Writing instructions in a language the computer can understand
+        </div>
+
+        <div class="process-step">
+            <span class="step-number">2</span>
+            Testing: Ensuring the program behaves as expected
+        </div>
+
+        <div class="process-step">
+            <span class="step-number">3</span>
+            Debugging: Identifying and fixing issues within the program
+        </div>
+    </div>
+
+    <h2>Approach to Solving Problems Using Computers</h2>
+
+    <div class="concept-card">
+        <div class="concept-header">🎯 Problem-Solving Process</div>
+        <p>To solve problems using computers effectively:</p>
+
+        <div class="process-step">
+            <span class="step-number">1</span>
+            Analyze: Break down the problem to understand its components
+        </div>
+
+        <div class="process-step">
+            <span class="step-number">2</span>
+            Design: Create a blueprint using algorithms or flowcharts
+        </div>
+
+        <div class="process-step">
+            <span class="step-number">3</span>
+            Implement: Code the solution using a programming language
+        </div>
+
+        <div class="process-step">
+            <span class="step-number">4</span>
+            Evaluate: Test and refine to ensure efficiency and correctness
+        </div>
+    </div>
+
+    <h2>Introduction to Flowcharts and Pseudocode</h2>
+
+    <div class="definition-box">
+        <div class="definition-title">📊 Flowcharts</div>
+        <p><strong>Flowcharts</strong> visually represent algorithms, illustrating the flow of control through diagrams.</p>
+    </div>
+
+    <div class="flowchart-symbols">
+        <span class="symbol-title">🔷 Common Flowchart Symbols</span>
+        
+        <div class="symbol-item">
+            <strong>⭕ Oval:</strong> Start/End points of the flowchart
+        </div>
+        
+        <div class="symbol-item">
+            <strong>▭ Rectangle:</strong> Process/Instruction steps
+        </div>
+        
+        <div class="symbol-item">
+            <strong>◆ Diamond:</strong> Decision points (yes/no questions)
+        </div>
+        
+        <div class="symbol-item">
+            <strong>▱ Parallelogram:</strong> Input/Output operations
+        </div>
+    </div>
+
+    <div class="definition-box" style="margin-top: 20px;">
+        <div class="definition-title">📝 Pseudocode</div>
+        <p><strong>Pseudocode</strong> is an informal high-level description of a program's logic using plain language, bridging the gap between human and machine understanding. It helps plan logic before actual coding.</p>
+    </div>
+
+    <div class="note">
+        <div class="note-title">💡 Why Use Flowcharts and Pseudocode?</div>
+        <p>Both tools help visualize and plan solutions before writing actual code, making it easier to identify logical errors and communicate ideas with team members.</p>
+    </div>
+
+    <h2>Examples of Flowcharts</h2>
+    <p style="margin-bottom: 20px;">Here are common programming problems that can be visualized using flowcharts:</p>
+
+    <div class="examples-grid">
+        <div class="example-card">
+            <div class="example-title">➕ Sum and Average of Numbers</div>
+            <p>Calculation flow from input through arithmetic operations</p>
+        </div>
+
+        <div class="example-card">
+            <div class="example-title">➗ Half of a Number</div>
+            <p>Dividing an input number and outputting the result</p>
+        </div>
+
+        <div class="example-card">
+            <div class="example-title">📐 Area of Rectangle</div>
+            <p>Using length and width inputs to compute the area</p>
+        </div>
+
+        <div class="example-card">
+            <div class="example-title">📊 Percentage Calculation</div>
+            <p>Computing and displaying a percentage of a value</p>
+        </div>
+
+        <div class="example-card">
+            <div class="example-title">🔢 Number Type</div>
+            <p>Decision-making for number categorization (Positive/Negative/Zero)</p>
+        </div>
+
+        <div class="example-card">
+            <div class="example-title">🔄 Counting</div>
+            <p>Algorithms for sequence printing (1 to N, N to 1, Even numbers)</p>
+        </div>
+
+        <div class="example-card">
+            <div class="example-title">➕ User Input and Loops</div>
+            <p>Iterative processes like summing numbers or printing factorials</p>
+        </div>
+
+        <div class="example-card">
+            <div class="example-title">✓ Decision-making</div>
+            <p>Examples include prime checking, maximum determination, triangle validity</p>
+        </div>
+
+        <div class="example-card">
+            <div class="example-title">💰 Interest Calculation</div>
+            <p>Differences between simple and compound interest calculations</p>
+        </div>
+
+        <div class="example-card">
+            <div class="example-title">△ Perimeter of Triangle</div>
+            <p>Summing side lengths to find the triangle's perimeter</p>
+        </div>
+    </div>
+
+    <h2>What is a Programming Language?</h2>
+
+    <div class="concept-card">
+        <div class="concept-header">🔤 Programming Language</div>
+        <div class="definition-box">
+            <p>A <strong>programming language</strong> is a formal set of instructions that a computer can interpret and execute. It provides a framework for translating algorithms into executable code.</p>
+        </div>
+
+        <div class="highlight" style="margin-top: 15px;">
+            <p><strong>Examples of Programming Languages:</strong></p>
+            <ul>
+                <li><strong>C++:</strong> High-performance, widely used for system programming and game development</li>
+                <li><strong>Python:</strong> Easy to learn, popular for data science and web development</li>
+                <li><strong>Java:</strong> Platform-independent, commonly used for enterprise applications</li>
+            </ul>
+            <p style="margin-top: 10px;">Each language has unique syntax and use cases tailored to different programming needs.</p>
+        </div>
+    </div>
+
+    <h2 style="margin-top: 50px;">📝 Lecture Quiz</h2>
+    <p style="color: #666; margin-bottom: 30px;">Test your understanding of programming basics with these questions:</p>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 1</div>
+        <div class="question-text">What is an algorithm in the context of programming?</div>
+        <div class="options">
+            <div class="option">A. A high-level programming language</div>
+            <div class="option correct">B. A step-by-step procedure to solve a problem ✓</div>
+            <div class="option">C. A tool used to convert code into machine language</div>
+            <div class="option">D. A type of database</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> An algorithm is a sequence of well-defined steps that provide a way to solve a specific problem. It is not a language or a tool but a concept used extensively in programming to outline solutions before coding.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 2</div>
+        <div class="question-text">Which of the following best describes programming?</div>
+        <div class="options">
+            <div class="option">A. Designing algorithms for digital problems</div>
+            <div class="option correct">B. Translating human ideas into a format understood by computers ✓</div>
+            <div class="option">C. Solving math problems</div>
+            <div class="option">D. Managing databases</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> Programming is the process of translating human ideas into a format that computers can understand and execute. It involves using programming languages to create instructions for computers to perform specific tasks.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 3</div>
+        <div class="question-text">Which symbol is commonly used in a flowchart to represent a decision point?</div>
+        <div class="options">
+            <div class="option">A. Rectangle</div>
+            <div class="option">B. Oval</div>
+            <div class="option correct">C. Diamond ✓</div>
+            <div class="option">D. Parallelogram</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> In flowcharts, a diamond shape is used to represent a decision point where a question is asked, and based on the answer (yes/no), the control flow branches to different paths.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 4</div>
+        <div class="question-text">What does pseudocode help with in the programming process?</div>
+        <div class="options">
+            <div class="option">A. Compiling code into machine language</div>
+            <div class="option">B. Physically testing code on hardware</div>
+            <div class="option correct">C. Planning the logic and structure of code using plain language ✓</div>
+            <div class="option">D. Executing code faster</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> Pseudocode is used to plan out the logic and structure of a program using plain language before actually writing the code in a specific programming language. It helps in organizing thoughts and identifying potential issues early in the development process.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 5</div>
+        <div class="question-text">How does one typically determine if a number is prime in a program?</div>
+        <div class="options">
+            <div class="option correct">A. Check if it is greater than 1 and only divisible by itself and 1 ✓</div>
+            <div class="option">B. Check if it is an odd number</div>
+            <div class="option">C. Check if it is a perfect square</div>
+            <div class="option">D. Check if it ends with a digit 1 or 9</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> A prime number is defined as a number greater than 1 that is not divisible by any other numbers except for itself and 1. This can be checked by iterating through possible divisors and testing for divisibility.
+        </div>
+    </div>
+
+    <div class="highlight" style="margin-top: 40px; text-align: center; background: #d4edda; border: 2px solid #28a745;">
+        <p style="color: #155724; font-size: 18px;"><strong>🎓 End of Document</strong></p>
+        <p style="color: #155724;">Master these basics to build a strong programming foundation!</p>
+    </div>
+
+</body>
+</html>

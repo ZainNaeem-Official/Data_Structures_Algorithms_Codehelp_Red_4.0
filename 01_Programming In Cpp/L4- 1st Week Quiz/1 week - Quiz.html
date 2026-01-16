@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Numbers and C++ Programming Quiz</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #007acc;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #007acc;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+            font-style: italic;
+        }
+        
+        .quiz-question {
+            background: #f8f9fa;
+            border: 2px solid #007acc;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+        
+        .question-number {
+            background: #007acc;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .question-text {
+            font-size: 17px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .options {
+            margin: 15px 0;
+        }
+        
+        .option {
+            background: white;
+            padding: 12px 15px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 2px solid #dee2e6;
+            font-size: 15px;
+        }
+        
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+            font-weight: 600;
+        }
+        
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+            font-weight: 600;
+        }
+        
+        .explanation {
+            background: #e7f3ff;
+            border-left: 4px solid #007acc;
+            padding: 12px 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .explanation strong {
+            color: #007acc;
+        }
+        
+        .code-section {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        
+        .code-section pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        
+        th {
+            background: #007acc;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .highlight {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+            }
+            
+            .quiz-question {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Binary Numbers and C++ Programming Quiz</h1>
+        <p class="subtitle">Comprehensive Assessment of Binary Systems and C++ Fundamentals</p>
+    </div>
+
+    <div class="highlight">
+        <p><strong>Overview:</strong> This quiz covers essential topics including binary number system conversions, binary arithmetic operations, C++ programming concepts, loops, operators, and fundamental programming principles. Each question includes detailed explanations to reinforce learning.</p>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 1</div>
+        <div class="question-text">The binary equivalent of the decimal number 10 is __________</div>
+        <div class="options">
+            <div class="option">A. 10</div>
+            <div class="option">B. 101</div>
+            <div class="option correct">C. 1010 ✓</div>
+            <div class="option">D. 11</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> The correct answer is 1010. To convert decimal 10 to binary, we repeatedly divide by 2:
+            <table style="margin: 10px 0;">
+                <tr><th>Division</th><th>Quotient</th><th>Remainder</th></tr>
+                <tr><td>10 ÷ 2</td><td>5</td><td>0</td></tr>
+                <tr><td>5 ÷ 2</td><td>2</td><td>1</td></tr>
+                <tr><td>2 ÷ 2</td><td>1</td><td>0</td></tr>
+                <tr><td>1 ÷ 2</td><td>0</td><td>1</td></tr>
+            </table>
+            Reading remainders from bottom to top: <strong>1010</strong>
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 2</div>
+        <div class="question-text">Two binary numbers are added as follows:<br>
+        <div class="code-section"><pre>  1  a  1  1
++ b  0  1  c
+-----------
+  d  0  0  1</pre></div>
+        Then (a,b,c,d) = ?</div>
+        <div class="options">
+            <div class="option">A. (1,0,0,1)</div>
+            <div class="option">B. (0,0,1,1)</div>
+            <div class="option">C. (0,1,1,0)</div>
+            <div class="option correct">D. (1,1,0,0) ✓</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> In binary addition, numbers are added column by column from right to left with carry-over. By solving each column: a=1, b=1, c=0, d=1, giving us (1,1,0,0).
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 3</div>
+        <div class="question-text">Which of the following is the binary equivalent of 25?</div>
+        <div class="options">
+            <div class="option">A. 11010</div>
+            <div class="option correct">B. 11001 ✓</div>
+            <div class="option">C. 10111</div>
+            <div class="option">D. 10101</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> Converting 25 to binary:
+            <ul style="margin: 5px 0;">
+                <li>25 ÷ 2 = 12, remainder = 1</li>
+                <li>12 ÷ 2 = 6, remainder = 0</li>
+                <li>6 ÷ 2 = 3, remainder = 0</li>
+                <li>3 ÷ 2 = 1, remainder = 1</li>
+                <li>1 ÷ 2 = 0, remainder = 1</li>
+            </ul>
+            Reading from bottom to top: <strong>11001</strong>
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 4</div>
+        <div class="question-text">What is the binary equivalent of the decimal number 67.625?</div>
+        <div class="options">
+            <div class="option">A. 1000010.11</div>
+            <div class="option">B. 1000011.11</div>
+            <div class="option">C. 1000010.101</div>
+            <div class="option correct">D. 1000011.101 ✓</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> Convert integer and fractional parts separately:<br>
+            <strong>Integer part (67):</strong> 1000011<br>
+            <strong>Fractional part (0.625):</strong><br>
+            0.625 × 2 = 1.25 → 1<br>
+            0.25 × 2 = 0.5 → 0<br>
+            0.5 × 2 = 1.0 → 1<br>
+            Result: <strong>1000011.101</strong>
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 5</div>
+        <div class="question-text">Computer uses which number system to store data and perform calculations</div>
+        <div class="options">
+            <div class="option correct">A. Binary ✓</div>
+            <div class="option">B. Octal</div>
+            <div class="option">C. Decimal</div>
+            <div class="option">D. Hexadecimal</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> Computers use the binary number system (base-2) with only two digits: 0 and 1. This is because electronic circuits work with two voltage levels representing ON (1) and OFF (0), making binary efficient and reliable for digital systems.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 6</div>
+        <div class="question-text">Given below are two statements:<br>
+        Statement 1: The binary equivalent of decimal number Decimal(10) = Binary(10101)<br>
+        Statement 2: Assume numbers to be binary, 1011 + 110 = 10101<br>
+        Choose the correct answer:</div>
+        <div class="options">
+            <div class="option">A. Both Statement 1 and Statement 2 are true</div>
+            <div class="option correct">B. Both Statement 1 and Statement 2 are false ✓</div>
+            <div class="option">C. Statement 1 is true but Statement 2 is false</div>
+            <div class="option">D. Statement 1 is false but Statement 2 is true</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong><br>
+            <strong>Statement 1:</strong> Decimal 10 = Binary 1010 (not 10101) → False<br>
+            <strong>Statement 2:</strong> 1011 + 110 = 10001 (not 10101) → False<br>
+            Both statements are false.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 7</div>
+        <div class="question-text">Given below are two statements:<br>
+        Statement 1: The base of the binary number system is 2.<br>
+        Statement 2: Binary addition is just like decimal addition except that the rules are much simpler.<br>
+        Choose the correct answer:</div>
+        <div class="options">
+            <div class="option correct">A. Both Statement 1 and Statement 2 are true ✓</div>
+            <div class="option">B. Both Statement 1 and Statement 2 are false</div>
+            <div class="option">C. Statement 1 is true but Statement 2 is false</div>
+            <div class="option">D. Statement 1 is false but Statement 2 is true</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong><br>
+            <strong>Statement 1:</strong> Binary uses base 2 (only 0 and 1) → True<br>
+            <strong>Statement 2:</strong> Binary addition follows simpler rules than decimal (only 4 rules: 0+0=0, 0+1=1, 1+0=1, 1+1=10) → True<br>
+            Both statements are true.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 8</div>
+        <div class="question-text">The next number P in the sequence of binary numbers 0, 10, 100, 110, P is:</div>
+        <div class="options">
+            <div class="option">A. 111</div>
+            <div class="option correct">B. 1000 ✓</div>
+            <div class="option">C. 1010</div>
+            <div class="option">D. 1001</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> Converting to decimal: 0, 2, 4, 6, ?<br>
+            Pattern: Each number increases by 2<br>
+            Next: 6 + 2 = 8<br>
+            8 in binary = <strong>1000</strong>
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 9</div>
+        <div class="question-text">What is the binary equivalent of the decimal number 1011?</div>
+        <div class="options">
+            <div class="option">A. 1011</div>
+            <div class="option">B. 111011</div>
+            <div class="option">C. 111111001</div>
+            <div class="option correct">D. 1111110011 ✓</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> Converting 1011 to binary by repeated division by 2:<br>
+            Reading remainders from bottom to top: <strong>1111110011</strong>
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 10</div>
+        <div class="question-text">What will be the decimal equivalent for binary number 1101110?</div>
+        <div class="options">
+            <div class="option">A. 121</div>
+            <div class="option">B. 102</div>
+            <div class="option">C. 115</div>
+            <div class="option correct">D. 110 ✓</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> Binary to decimal conversion:
+            <table style="margin: 10px 0;">
+                <tr><th>Binary</th><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+                <tr><th>Power of 2</th><td>2⁶</td><td>2⁵</td><td>2⁴</td><td>2³</td><td>2²</td><td>2¹</td><td>2⁰</td></tr>
+                <tr><th>Value</th><td>64</td><td>32</td><td>0</td><td>8</td><td>4</td><td>2</td><td>0</td></tr>
+            </table>
+            Sum: 64 + 32 + 8 + 4 + 2 = <strong>110</strong>
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 11</div>
+        <div class="question-text">Assume numbers to be in binary, find 1111 + 1001 - 1010 = ?</div>
+        <div class="options">
+            <div class="option">A. 111</div>
+            <div class="option">B. 1100</div>
+            <div class="option correct">C. 1110 ✓</div>
+            <div class="option">D. 1010</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> Convert to decimal, calculate, then back to binary:<br>
+            1111 = 15, 1001 = 9, 1010 = 10<br>
+            15 + 9 - 10 = 14<br>
+            14 in binary = <strong>1110</strong>
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 12</div>
+        <div class="question-text">Find the decimal equivalent of the binary number 11001.011?</div>
+        <div class="options">
+            <div class="option correct">A. 25.375 ✓</div>
+            <div class="option">B. 31.625</div>
+            <div class="option">C. 43.175</div>
+            <div class="option">D. None</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong><br>
+            <strong>Integer part (11001):</strong> 16 + 8 + 1 = 25<br>
+            <strong>Fractional part (011):</strong> 0 + 0.25 + 0.125 = 0.375<br>
+            Total: <strong>25.375</strong>
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 13</div>
+        <div class="question-text">Which of the following is not a binary number?</div>
+        <div class="options">
+            <div class="option">A. 1111</div>
+            <div class="option">B. 101</div>
+            <div class="option correct">C. 11E ✓</div>
+            <div class="option">D. 0</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> Binary numbers consist only of digits 0 and 1. The option "11E" contains the letter 'E', which is not a valid binary digit. Therefore, 11E is not a binary number.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 14</div>
+        <div class="question-text">Which of the following is a Logical AND Operator?</div>
+        <div class="options">
+            <div class="option">A. ||</div>
+            <div class="option">B. &</div>
+            <div class="option correct">C. && ✓</div>
+            <div class="option">D. !</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong><br>
+            || → Logical OR operator<br>
+            & → Bitwise AND operator<br>
+            && → Logical AND operator (returns true only if both conditions are true)<br>
+            ! → Logical NOT operator
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 15</div>
+        <div class="question-text">Which loop is guaranteed to execute at least once?</div>
+        <div class="options">
+            <div class="option">A. for</div>
+            <div class="option">B. while</div>
+            <div class="option correct">C. do-while ✓</div>
+            <div class="option">D. None</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> The do-while loop executes the body first and checks the condition afterward, ensuring it runs at least once. Both for and while loops check the condition before execution, so they may not run at all if the condition is initially false.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 16</div>
+        <div class="question-text">What will be the output of the following C++ code?</div>
+        <div class="code-section"><pre>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n;
+    for (n = 5; n >= 0; n--){
+        cout &lt;&lt; n;
+        if(n==3) break;
+    }
+    return 0;
+}</pre></div>
+        <div class="options">
+            <div class="option correct">A. 543 ✓</div>
+            <div class="option">B. 42</div>
+            <div class="option">C. 46</div>
+            <div class="option">D. 78</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> Loop starts at n=5 and decrements:<br>
+            n=5: prints 5, continues<br>
+            n=4: prints 4, continues<br>
+            n=3: prints 3, break statement executes<br>
+            Output: <strong>543</strong>
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 17</div>
+        <div class="question-text">How many minimum number of functions should be present in a C++ program for its execution?</div>
+        <div class="options">
+            <div class="option correct">A. 1 ✓</div>
+            <div class="option">B. 2</div>
+            <div class="option">C. 3</div>
+            <div class="option">D. None</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> A C++ program requires at least one function: main(). The main() function is the entry point where program execution begins. While additional functions can exist, only main() is mandatory.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 18</div>
+        <div class="question-text">The statement i++, is equivalent to</div>
+        <div class="options">
+            <div class="option">A. i = i + i</div>
+            <div class="option correct">B. i = i + 1 ✓</div>
+            <div class="option">C. i = i - 1</div>
+            <div class="option">D. i--</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> i++ is the post-increment operator, which increases the value of i by 1. This is equivalent to writing i = i + 1.
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 19</div>
+        <div class="question-text">What's wrong? For(int k=2, k <= 12, k++)</div>
+        <div class="options">
+            <div class="option">A. the increment should always be ++k</div>
+            <div class="option">B. the variable must always be the letter i when using a for loop</div>
+            <div class="option">C. there should be a semicolon at the end of the statement</div>
+            <div class="option correct">D. the commas should be semicolons ✓</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> In C++, the for loop syntax requires semicolons (;) to separate the three parts: initialization, condition, and increment. The correct syntax is:<br>
+            <code>for(int k=2; k <= 12; k++)</code>
+        </div>
+    </div>
+
+    <div class="quiz-question">
+        <div class="question-number">Question 20</div>
+        <div class="question-text">A computer language that is written in binary codes only is _____</div>
+        <div class="options">
+            <div class="option correct">A. Machine Language ✓</div>
+            <div class="option">B. C</div>
+            <div class="option">C. C#</div>
+            <div class="option">D. C++</div>
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong> Machine language is the lowest-level programming language consisting only of binary codes (0 and 1). These instructions are directly understood by the CPU without requiring translation. High-level languages like C, C#, and C++ must be compiled into machine code before execution.
+        </div>
+    </div>
+
+    <div class="highlight" style="margin-top: 40px; text-align: center; background: #d4edda; border: 2px solid #28a745;">
+        <p style="color: #155724; font-size: 18px;"><strong>🎓 End of Quiz</strong></p>
+        <p style="color: #155724;">Review these questions to strengthen your understanding of binary systems and C++ programming!</p>
+    </div>
+
+</body>
+</html>
