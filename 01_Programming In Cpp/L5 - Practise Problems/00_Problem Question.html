@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Problems - Codehelp</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 30px 0;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .problem-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .problem-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .problem-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .problem-title {
+            font-size: 1.8em;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .difficulty {
+            background: #4CAF50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-left: auto;
+        }
+
+        .problem-description {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05em;
+        }
+
+        .section-title {
+            color: #667eea;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin: 25px 0 15px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title:before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: #667eea;
+            margin-right: 10px;
+        }
+
+        .example-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .example-box h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+
+        .constraints {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .constraints h3 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .constraints ul {
+            list-style: none;
+            color: #856404;
+        }
+
+        .constraints li:before {
+            content: '✓ ';
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .input-output {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .io-box {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #2196F3;
+        }
+
+        .io-box h4 {
+            color: #1976D2;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .input-output {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            .problem-header {
+                flex-wrap: wrap;
+            }
+
+            .difficulty {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+
+        .explanation {
+            background: #e8f5e9;
+            border-left: 4px solid #4CAF50;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .explanation strong {
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Programming Problems</h1>
+            <p>Master the fundamentals with these carefully curated problems</p>
+        </header>
+
+        <!-- Problem 1 -->
+        <div class="problem-card">
+            <div class="problem-header">
+                <div class="problem-number">1</div>
+                <div class="problem-title">Print Namaste Codehelp</div>
+                <div class="difficulty">Easy</div>
+            </div>
+            <div class="problem-description">
+                Display the message "Namaste Codehelp" with specific formatting. The message should be enclosed with "@@" at both the start and end. This helps you practice basic string formatting and output operations.
+            </div>
+            
+            <div class="section-title">Example Output</div>
+            <div class="code-block">@@Namaste Codehelp@@</div>
+
+            <div class="example-box">
+                <h4>Example 1:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        name = Codehelp
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        Namaste Codehelp
+                    </div>
+                </div>
+                <div class="explanation">
+                    <strong>Explanation:</strong> The program outputs the exact phrase as shown without any extra spaces or new lines.
+                </div>
+            </div>
+
+            <div class="constraints">
+                <h3>Constraints</h3>
+                <ul>
+                    <li>No input constraints - just print the formatted message</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Problem 2 -->
+        <div class="problem-card">
+            <div class="problem-header">
+                <div class="problem-number">2</div>
+                <div class="problem-title">Echo Integer Input</div>
+                <div class="difficulty">Easy</div>
+            </div>
+            <div class="problem-description">
+                Create a program that reads an integer from input and outputs exactly the same integer. This exercise helps you get comfortable with basic input and output operations.
+            </div>
+
+            <div class="example-box">
+                <h4>Example 1:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        5
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        5
+                    </div>
+                </div>
+                <div class="explanation">
+                    <strong>Explanation:</strong> The program takes the input '5' and prints it as output.
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h4>Example 2:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        -123456
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        -123456
+                    </div>
+                </div>
+            </div>
+
+            <div class="constraints">
+                <h3>Constraints</h3>
+                <ul>
+                    <li>-10⁶ ≤ input ≤ 10⁶</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Problem 3 -->
+        <div class="problem-card">
+            <div class="problem-header">
+                <div class="problem-number">3</div>
+                <div class="problem-title">Print Half of an Integer</div>
+                <div class="difficulty">Easy</div>
+            </div>
+            <div class="problem-description">
+                Implement a function that computes and prints half of a given integer. For even integers, perform integer division. For odd integers, include the decimal value.
+            </div>
+
+            <div class="example-box">
+                <h4>Example 1:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        10
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        5
+                    </div>
+                </div>
+                <div class="explanation">
+                    <strong>Explanation:</strong> Half of 10 is 5.
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h4>Example 2:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        7
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        3.5
+                    </div>
+                </div>
+                <div class="explanation">
+                    <strong>Explanation:</strong> For odd number 7, dividing by 2 results in 3.5.
+                </div>
+            </div>
+
+            <div class="constraints">
+                <h3>Constraints</h3>
+                <ul>
+                    <li>Handle both positive and negative integers</li>
+                    <li>Return precise values for both even and odd numbers</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Problem 4 -->
+        <div class="problem-card">
+            <div class="problem-header">
+                <div class="problem-number">4</div>
+                <div class="problem-title">Sum of Two Integers</div>
+                <div class="difficulty">Easy</div>
+            </div>
+            <div class="problem-description">
+                Implement a program that takes two integers as inputs and computes their sum. This helps you understand basic arithmetic operations and input/output handling.
+            </div>
+
+            <div class="example-box">
+                <h4>Example 1:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        a = 5, b = 10
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        15
+                    </div>
+                </div>
+                <div class="explanation">
+                    <strong>Explanation:</strong> The sum of 5 and 10 is 15.
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h4>Example 2:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        a = -20, b = 10
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        -10
+                    </div>
+                </div>
+            </div>
+
+            <div class="constraints">
+                <h3>Constraints</h3>
+                <ul>
+                    <li>-10⁶ ≤ a, b ≤ 10⁶</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Problem 5 -->
+        <div class="problem-card">
+            <div class="problem-header">
+                <div class="problem-number">5</div>
+                <div class="problem-title">Average of Three Integers</div>
+                <div class="difficulty">Easy</div>
+            </div>
+            <div class="problem-description">
+                Write a program that computes the average of three integers using integer division (discard the fractional part).
+            </div>
+
+            <div class="example-box">
+                <h4>Example 1:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        a = 5, b = 10, c = 15
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        10
+                    </div>
+                </div>
+                <div class="explanation">
+                    <strong>Explanation:</strong> (5 + 10 + 15) / 3 = 30 / 3 = 10
+                </div>
+            </div>
+
+            <div class="constraints">
+                <h3>Constraints</h3>
+                <ul>
+                    <li>-10⁶ ≤ a, b, c ≤ 10⁶</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Problem 6 -->
+        <div class="problem-card">
+            <div class="problem-header">
+                <div class="problem-number">6</div>
+                <div class="problem-title">Calculate Area of Rectangle</div>
+                <div class="difficulty">Easy</div>
+            </div>
+            <div class="problem-description">
+                Calculate the area of a rectangle using the formula: Area = Length × Breadth
+            </div>
+
+            <div class="example-box">
+                <h4>Example 1:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        length = 5, breadth = 10
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        50
+                    </div>
+                </div>
+                <div class="explanation">
+                    <strong>Explanation:</strong> Area = 5 × 10 = 50
+                </div>
+            </div>
+
+            <div class="constraints">
+                <h3>Constraints</h3>
+                <ul>
+                    <li>1 ≤ length, breadth ≤ 10⁶</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Problem 7 -->
+        <div class="problem-card">
+            <div class="problem-header">
+                <div class="problem-number">7</div>
+                <div class="problem-title">Calculate Percentage</div>
+                <div class="difficulty">Easy</div>
+            </div>
+            <div class="problem-description">
+                Compute the percentage of marks obtained by a student. Formula: (obtainedMarks / totalMarks) × 100. Round to two decimal places.
+            </div>
+
+            <div class="example-box">
+                <h4>Example 1:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        totalMarks = 100, obtainedMarks = 75
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        75.00
+                    </div>
+                </div>
+                <div class="explanation">
+                    <strong>Explanation:</strong> (75 / 100) × 100 = 75.00%
+                </div>
+            </div>
+
+            <div class="constraints">
+                <h3>Constraints</h3>
+                <ul>
+                    <li>1 ≤ totalMarks ≤ 10⁶</li>
+                    <li>0 ≤ obtainedMarks ≤ totalMarks</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Problem 8 -->
+        <div class="problem-card">
+            <div class="problem-header">
+                <div class="problem-number">8</div>
+                <div class="problem-title">Check Voting Eligibility</div>
+                <div class="difficulty">Easy</div>
+            </div>
+            <div class="problem-description">
+                Check if a person is eligible to vote based on their age. A person can vote if they are 18 years or older.
+            </div>
+
+            <div class="example-box">
+                <h4>Example 1:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        age = 18
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        Eligible to vote
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h4>Example 2:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        age = 16
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        Not eligible to vote
+                    </div>
+                </div>
+            </div>
+
+            <div class="constraints">
+                <h3>Constraints</h3>
+                <ul>
+                    <li>0 ≤ age ≤ 150</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Problem 9 -->
+        <div class="problem-card">
+            <div class="problem-header">
+                <div class="problem-number">9</div>
+                <div class="problem-title">Check Number Sign</div>
+                <div class="difficulty">Easy</div>
+            </div>
+            <div class="problem-description">
+                Determine whether a given integer is Positive, Negative, or Zero.
+            </div>
+
+            <div class="example-box">
+                <h4>Example 1:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        num = 10
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        Positive
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h4>Example 2:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        num = -5
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        Negative
+                    </div>
+                </div>
+            </div>
+
+            <div class="constraints">
+                <h3>Constraints</h3>
+                <ul>
+                    <li>-10⁶ ≤ num ≤ 10⁶</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Problem 10 -->
+        <div class="problem-card">
+            <div class="problem-header">
+                <div class="problem-number">10</div>
+                <div class="problem-title">Determine Day Type</div>
+                <div class="difficulty">Easy</div>
+            </div>
+            <div class="problem-description">
+                Determine whether a given day (1-7) represents a Weekday or Weekend. Days 1-5 are Weekday, 6-7 are Weekend. Use if-else-if ladder.
+            </div>
+
+            <div class="example-box">
+                <h4>Example 1:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        day = 1
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        Weekday
+                    </div>
+                </div>
+                <div class="explanation">
+                    <strong>Explanation:</strong> Day 1 is Monday, which is a weekday.
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h4>Example 2:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        day = 6
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        Weekend
+                    </div>
+                </div>
+                <div class="explanation">
+                    <strong>Explanation:</strong> Day 6 is Saturday, which is a weekend.
+                </div>
+            </div>
+
+            <div class="constraints">
+                <h3>Constraints</h3>
+                <ul>
+                    <li>1 ≤ day ≤ 7</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Problem 11 -->
+        <div class="problem-card">
+            <div class="problem-header">
+                <div class="problem-number">11</div>
+                <div class="problem-title">Determine Month Name</div>
+                <div class="difficulty">Easy</div>
+            </div>
+            <div class="problem-description">
+                Convert an integer (1-12) to its corresponding month name using a switch-case statement.
+            </div>
+
+            <div class="example-box">
+                <h4>Example 1:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        month = 1
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        January
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h4>Example 2:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        month = 6
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        June
+                    </div>
+                </div>
+            </div>
+
+            <div class="constraints">
+                <h3>Constraints</h3>
+                <ul>
+                    <li>1 ≤ month ≤ 12</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Problem 12 -->
+        <div class="problem-card">
+            <div class="problem-header">
+                <div class="problem-number">12</div>
+                <div class="problem-title">Print Number Multiple Times</div>
+                <div class="difficulty">Easy</div>
+            </div>
+            <div class="problem-description">
+                Print a number 'num' exactly 'n' times on a single line, with each occurrence separated by a space.
+            </div>
+
+            <div class="example-box">
+                <h4>Example 1:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        num = 5, n = 3
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        5 5 5
+                    </div>
+                </div>
+                <div class="explanation">
+                    <strong>Explanation:</strong> The number 5 is printed 3 times.
+                </div>
+            </div>
+
+            <div class="constraints">
+                <h3>Constraints</h3>
+                <ul>
+                    <li>-10⁶ ≤ num ≤ 10⁶</li>
+                    <li>1 ≤ n ≤ 1000</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Problem 13 -->
+        <div class="problem-card">
+            <div class="problem-header">
+                <div class="problem-number">13</div>
+                <div class="problem-title">Print Counting from 1 to N</div>
+                <div class="difficulty">Easy</div>
+            </div>
+            <div class="problem-description">
+                Print all integers from 1 to n in a single line, separated by spaces.
+            </div>
+
+            <div class="example-box">
+                <h4>Example 1:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        n = 5
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        1 2 3 4 5
+                    </div>
+                </div>
+            </div>
+
+            <div class="constraints">
+                <h3>Constraints</h3>
+                <ul>
+                    <li>1 ≤ n ≤ 1000</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Problem 14 -->
+        <div class="problem-card">
+            <div class="problem-header">
+                <div class="problem-number">14</div>
+                <div class="problem-title">Print Counting from N to 1</div>
+                <div class="difficulty">Easy</div>
+            </div>
+            <div class="problem-description">
+                Print all integers from n down to 1 in non-increasing order, separated by spaces.
+            </div>
+
+            <div class="example-box">
+                <h4>Example 1:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        n = 5
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        5 4 3 2 1
+                    </div>
+                </div>
+            </div>
+
+            <div class="constraints">
+                <h3>Constraints</h3>
+                <ul>
+                    <li>1 ≤ n ≤ 1000</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Problem 15 -->
+        <div class="problem-card">
+            <div class="problem-header">
+                <div class="problem-number">15</div>
+                <div class="problem-title">Sum of N Numbers</div>
+                <div class="difficulty">Easy</div>
+            </div>
+            <div class="problem-description">
+                Calculate the total sum of n integers. First input is n, followed by n integers.
+            </div>
+
+            <div class="example-box">
+                <h4>Example 1:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        n = 3, values = 1 2 3
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        6
+                    </div>
+                </div>
+                <div class="explanation">
+                    <strong>Explanation:</strong> 1 + 2 + 3 = 6
+                </div>
+            </div>
+
+            <div class="constraints">
+                <h3>Constraints</h3>
+                <ul>
+                    <li>1 ≤ n ≤ 1000</li>
+                    <li>-10⁶ ≤ value ≤ 10⁶</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Problem 16 -->
+        <div class="problem-card">
+            <div class="problem-header">
+                <div class="problem-number">16</div>
+                <div class="problem-title">Print Even Numbers from 1 to N</div>
+                <div class="difficulty">Easy</div>
+            </div>
+            <div class="problem-description">
+                Print all even numbers from 1 to n, separated by spaces.
+            </div>
+
+            <div class="example-box">
+                <h4>Example 1:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        n = 10
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        2 4 6 8 10
+                    </div>
+                </div>
+            </div>
+
+            <div class="constraints">
+                <h3>Constraints</h3>
+                <ul>
+                    <li>1 ≤ n ≤ 1000</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Problem 17 -->
+        <div class="problem-card">
+            <div class="problem-header">
+                <div class="problem-number">17</div>
+                <div class="problem-title">Maximum of Three Numbers</div>
+                <div class="difficulty">Easy</div>
+            </div>
+            <div class="problem-description">
+                Find and print the maximum of three given numbers.
+            </div>
+
+            <div class="example-box">
+                <h4>Example 1:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        a=3 b=7 c=5
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        7
+                    </div>
+                </div>
+                <div class="explanation">
+                    <strong>Explanation:</strong> Among 3, 7, and 5, the maximum is 7.
+                </div>
+            </div>
+
+            <div class="constraints">
+                <h3>Constraints</h3>
+                <ul>
+                    <li>-10⁹ ≤ a, b, c ≤ 10⁹</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Problem 18 -->
+        <div class="problem-card">
+            <div class="problem-header">
+                <div class="problem-number">18</div>
+                <div class="problem-title">Check Valid Triangle</div>
+                <div class="difficulty">Easy</div>
+            </div>
+            <div class="problem-description">
+                Determine if a valid triangle can be formed with three given side lengths. A triangle is valid if the sum of any two sides is greater than the third side.
+            </div>
+
+            <div class="example-box">
+                <h4>Example 1:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        a=29 b=37 c=18
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        Yes
+                    </div>
+                </div>
+                <div class="explanation">
+                    <strong>Explanation:</strong> The sum of any two sides is greater than the third side.
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h4>Example 2:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        a=336366944 b=34259552 c=827373662
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        No
+                    </div>
+                </div>
+                <div class="explanation">
+                    <strong>Explanation:</strong> The triangle inequality is not satisfied.
+                </div>
+            </div>
+
+            <div class="constraints">
+                <h3>Constraints</h3>
+                <ul>
+                    <li>1 ≤ a, b, c ≤ 10⁹</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Problem 19 -->
+        <div class="problem-card">
+            <div class="problem-header">
+                <div class="problem-number">19</div>
+                <div class="problem-title">Check Prime Number</div>
+                <div class="difficulty">Easy</div>
+            </div>
+            <div class="problem-description">
+                Determine whether a given number is prime or not. A prime number is greater than 1 and has no divisors other than 1 and itself.
+            </div>
+
+            <div class="example-box">
+                <h4>Example 1:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        n=7
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        Yes
+                    </div>
+                </div>
+                <div class="explanation">
+                    <strong>Explanation:</strong> 7 is only divisible by 1 and 7.
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h4>Example 2:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        n=10
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        No
+                    </div>
+                </div>
+                <div class="explanation">
+                    <strong>Explanation:</strong> 10 is divisible by 1, 2, 5, and 10.
+                </div>
+            </div>
+
+            <div class="constraints">
+                <h3>Constraints</h3>
+                <ul>
+                    <li>1 ≤ n ≤ 10⁹</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Problem 20 -->
+        <div class="problem-card">
+            <div class="problem-header">
+                <div class="problem-number">20</div>
+                <div class="problem-title">Find Simple Interest</div>
+                <div class="difficulty">Easy</div>
+            </div>
+            <div class="problem-description">
+                Calculate Simple Interest using the formula: SI = (P × R × T) / 100, where P is Principal, R is Rate of Interest (%), and T is Time (years).
+            </div>
+
+            <div class="example-box">
+                <h4>Example 1:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        P=1000 R=5 T=2
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        100
+                    </div>
+                </div>
+                <div class="explanation">
+                    <strong>Explanation:</strong> SI = (1000 × 5 × 2) / 100 = 100
+                </div>
+            </div>
+
+            <div class="constraints">
+                <h3>Constraints</h3>
+                <ul>
+                    <li>1 ≤ P ≤ 10⁶</li>
+                    <li>1 ≤ R ≤ 100</li>
+                    <li>1 ≤ T ≤ 100</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Problem 21 -->
+        <div class="problem-card">
+            <div class="problem-header">
+                <div class="problem-number">21</div>
+                <div class="problem-title">Find Perimeter of Triangle</div>
+                <div class="difficulty">Easy</div>
+            </div>
+            <div class="problem-description">
+                Calculate the perimeter of a triangle by summing the lengths of its three sides.
+            </div>
+
+            <div class="example-box">
+                <h4>Example 1:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        a=562 b=727 c=349
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        1638
+                    </div>
+                </div>
+                <div class="explanation">
+                    <strong>Explanation:</strong> Perimeter = 562 + 727 + 349 = 1638
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h4>Example 2:</h4>
+                <div class="input-output">
+                    <div class="io-box">
+                        <h4>Input:</h4>
+                        a=317 b=529 c=702
+                    </div>
+                    <div class="io-box">
+                        <h4>Output:</h4>
+                        1548
+                    </div>
+                </div>
+            </div>
+
+            <div class="constraints">
+                <h3>Constraints</h3>
+                <ul>
+                    <li>1 ≤ a, b, c ≤ 1000</li>
+                    <li>The sides always form a valid triangle</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer style="text-align: center; padding: 40px 0; color: white;">
+            <p style="font-size: 1.2em; margin-bottom: 10px;">🎯 Happy Coding!</p>
+            <p style="opacity: 0.8;">Master these problems to build a strong foundation in programming</p>
+        </footer>
+
+    </div>
+</body>
+</html>
+                    
